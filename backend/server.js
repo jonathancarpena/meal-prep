@@ -1,4 +1,8 @@
 import dotenv from "dotenv"
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(dirname(fileURLToPath(import.meta.url)))
 
 // Express
 import express, { json, urlencoded } from 'express'
@@ -44,6 +48,12 @@ app.use("/api/meals", mealRoutes)
 app.use("/api/orders", orderRoutes)
 app.use('/image', imageRoutes)
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, '/frontend/build')))
+    app.get("/", (req, res) => {
+        res.sendFile(path.join(__dirname, "frontend", "build", "index.html"))
+    })
+}
 
 // Port server is running on
 const PORT = process.env.PORT || 5000
