@@ -19,18 +19,18 @@ import { BsCalendar2EventFill } from 'react-icons/bs'
 import Loading from '../../components/Admin/Loading'
 import DatePicker from 'react-datepicker'
 const ToggleDay = ({ selected, status, setAllDates, allDates }) => {
-    const [toggle, setToggle] = useState(status)
+
     const { token } = useSelector(state => state.admin)
     async function handleToggleDate(condition) {
         if (condition) {
-            setToggle(condition)
+
             setAllDates([...allDates, { _id: "temp", day: moment(selected).toISOString() }])
             const body = {
                 day: moment(selected).toDate()
             }
             await post_AddDate(token, body)
         } else {
-            setToggle(condition)
+
             const currentDate = moment(selected).format('YYYY-MM-DD')
             const blockedOff = allDates.filter((item) => moment(item.day).format('YYYY-MM-DD') !== currentDate)
             setAllDates([...blockedOff])
@@ -117,7 +117,7 @@ function Activity() {
         if (allDates !== null && orders !== null && content !== null) {
             setLoading(false)
         }
-    }, [allDates, orders])
+    }, [allDates, orders, content])
 
     useEffect(() => {
         const formatSelected = moment(selected).format('YYYY-MM-DD')
@@ -174,7 +174,7 @@ function Activity() {
         return <Loading />
     }
     return (
-        <div className='pt-[10rem] sm:px-20 px-10 pb-20'>
+        <div className='pt-[10rem] lg:px-20 px-10 pb-20'>
             <div className='bg-white rounded-xl p-5 drop-shadow-xl'>
                 {/* Header */}
                 <h1 className='text-neutral-700 text-3xl mb-5'>

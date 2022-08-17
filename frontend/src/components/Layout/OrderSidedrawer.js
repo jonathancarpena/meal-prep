@@ -12,6 +12,7 @@ import { replaceSpaces } from '../../lib/utils'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { updateQtyBag } from '../../redux/features/bag/bagSlice'
+import { updateSession } from '../../redux/features/session/sessionSlice'
 import { closeSidedrawer } from '../../redux/features/modal/modalSlice'
 
 // Icons
@@ -54,6 +55,7 @@ const QtyAdjust = ({ qty, setQty, index }) => {
             }
         }
         dispatch(updateQtyBag({ qty: newQty, index }))
+        dispatch(updateSession())
     }
     return (
         <div className='flex border-2 bg-white overflow-hidden border-neutral-700 rounded-xl w-max'>

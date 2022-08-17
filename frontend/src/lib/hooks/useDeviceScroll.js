@@ -15,7 +15,7 @@ function useDeviceSize() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    return [scroll]
+    return scroll
 
 }
 

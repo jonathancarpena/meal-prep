@@ -108,7 +108,7 @@ function AdminMeals() {
             get_AllMeals()
                 .then(data => setMeals([...data]))
         }
-    }, [])
+    }, [meals])
     useEffect(() => {
         if (meals !== null) {
             setLoading(false)
@@ -119,7 +119,7 @@ function AdminMeals() {
         return <Loading />
     }
     return (
-        <div className='pt-[10rem] px-10 sm:px-20 pb-20'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
             <div className='bg-white rounded-xl p-5 drop-shadow-xl'>
 
                 <div className='flex justify-between items-center'>
@@ -138,7 +138,7 @@ function AdminMeals() {
 
 
                 {/* Grid */}
-                <div className='sm:flex hidden flex-col '>
+                <div className='lg:flex hidden flex-col '>
 
                     <div className='grid grid-cols-6 gap-5 border-b-2 py-2 px-4'>
                         {MealHeaders.map((item) => (
@@ -188,7 +188,7 @@ function AdminMeals() {
                 </div>
 
                 {/* Mobile Grid */}
-                <div className='flex flex-col sm:hidden'>
+                <div className='flex flex-col lg:hidden'>
 
                     <div className={`${meals.length > 7 ? 'overflow-y-scroll' : ''} flex flex-col max-h-[700px]`}>
                         <div className='sticky top-0 w-max overflow-visible bg-white grid grid-cols-[70px_200px_100px_100px_100px_70px] gap-5 border-b-2 py-2 px-4'>

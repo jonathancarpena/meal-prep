@@ -1,7 +1,10 @@
 import React, { useCallback, useRef } from 'react'
 
+// API
+import { IMAGE_API } from '../../../lib/api';
+
 // Router
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Utils
 import { replaceSpaces } from '../../../lib/utils'
@@ -21,6 +24,7 @@ function Recommended({ similarMeals }) {
     const navigate = useNavigate()
     const sliderRef = useRef(null);
     const mobileSliderRef = useRef(null)
+    window.scrollTo(0, 0)
 
     const handlePrev = useCallback(() => {
         if (!sliderRef.current) return;
@@ -42,33 +46,36 @@ function Recommended({ similarMeals }) {
         mobileSliderRef.current.swiper.slideNext();
     }, []);
 
+    function handleNavigate(link) {
+        navigate(link)
+        window.location.reload(false);
+    }
     return (
         <div>
             <h1 className='font-bold text-3xl text-center text-neutral-700'>
                 You May Also Like
             </h1>
 
-            <div className='hidden sm:block sm:relative mt-[2rem] bg-white p-10'>
+            <div className='hidden lg:block relative mt-[2rem] bg-white rounded-2xl p-10'>
                 <Swiper
                     ref={sliderRef}
-                    slidesPerView={3}
+                    slidesPerView={4}
                     loop={true}
                     spaceBetween={50}
                     className={`w-[80%] rounded-2xl p-10`}
                 >
                     {similarMeals.map((item, idx) => (
-                        <SwiperSlide key={`Meal-${idx}`} onClick={() => navigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)} className='cursor-pointer flex justify-center items-center '>
-                            <Link to={`/meals/${replaceSpaces(item.name)}/${item._id}`} className=''>
-                                <div className='w-[200px] h-[200px] bg-neutral-200 flex items-center justify-center rounded-xl'>
-                                    {item.img
-                                        ? <img src={item.img} alt={item.img} />
-                                        : <GiCookingPot className='w-[80%] h-[80%]  text-white' />
-                                    }
-                                </div>
-                                <p className='text-lg text-center font-semibold text-neutral-700'>
-                                    {item.name}
-                                </p>
-                            </Link>
+                        <SwiperSlide key={`Meal-${idx}`} onClick={() => handleNavigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)} className='cursor-pointer flex flex-col justify-center items-center '>
+                            <div className='w-[200px] h-[200px] bg-neutral-200 flex items-center justify-center rounded-xl'>
+                                {item.img
+                                    ? <img src={`${IMAGE_API}/${item.img}`} alt={item.name} className='w-full h-full object-center object-cover rounded-lg' />
+                                    : <GiCookingPot className='w-[80%] h-[80%]  text-white' />
+                                }
+                            </div>
+                            <p className='text-lg text-center font-semibold text-neutral-700 uppercase'>
+                                {item.name}
+                            </p>
+
 
                         </SwiperSlide>
                     ))}
@@ -84,7 +91,7 @@ function Recommended({ similarMeals }) {
             </div>
 
             {/* Mobile Swiper */}
-            <div className='sm:hidden relative mt-[2rem] bg-white p-10'>
+            <div className='lg:hidden relative mt-[2rem] bg-white rounded-2xl p-10'>
                 <Swiper
                     ref={mobileSliderRef}
                     slidesPerView={1}
@@ -92,18 +99,18 @@ function Recommended({ similarMeals }) {
                     className={` w-[80%] rounded-2xl p-10`}
                 >
                     {similarMeals.map((item, idx) => (
-                        <SwiperSlide key={`Meal-${idx}`} onClick={() => navigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)} className='cursor-pointer flex justify-center items-center '>
-                            <Link to={`/meals/${replaceSpaces(item.name)}/${item._id}`} className=''>
-                                <div className='w-[200px] h-[200px] bg-neutral-200 flex items-center justify-center rounded-xl'>
-                                    {item.img
-                                        ? <img src={item.img} alt={item.img} />
-                                        : <GiCookingPot className='w-[80%] h-[80%]  text-white' />
-                                    }
-                                </div>
-                                <p className='text-lg text-center font-semibold text-neutral-700'>
-                                    {item.name}
-                                </p>
-                            </Link>
+                        <SwiperSlide key={`Meal-${idx}`} onClick={() => handleNavigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)} className='cursor-pointer flex flex-col justify-center items-center '>
+
+                            <div className='w-[200px] h-[200px] bg-neutral-200 flex items-center justify-center rounded-xl'>
+                                {item.img
+                                    ? <img src={`${IMAGE_API}/${item.img}`} alt={item.name} className='w-full h-full object-center object-cover rounded-lg' />
+                                    : <GiCookingPot className='w-[80%] h-[80%]  text-white' />
+                                }
+                            </div>
+                            <p className='text-lg text-center font-semibold text-neutral-700 uppercase'>
+                                {item.name}
+                            </p>
+
 
                         </SwiperSlide>
                     ))}

@@ -8,7 +8,7 @@ import { delete_RemoveOrder, put_UpdateOrder } from '../../../lib/api'
 import { Link } from 'react-router-dom'
 
 // Redux
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 // Icons
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'

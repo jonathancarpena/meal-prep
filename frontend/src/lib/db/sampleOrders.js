@@ -1,5 +1,5 @@
 import moment from "moment"
-export default [
+const sample = [
     {
         order_id: 1,
         date_placed: moment(Date.now()),
@@ -152,3 +152,5 @@ export default [
         completed: true,
     },
 ]
+
+export default sample

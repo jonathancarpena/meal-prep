@@ -1,85 +1,55 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-
-// Images
-import Accent from '../../images/home/meals-accent.png'
-
-
-// Icons
-import { GiHotMeal } from 'react-icons/gi'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar } from 'swiper';
+import { Autoplay } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 
+// Images
+import meal1 from '../../images/home/meals-sample-1.jpg'
+import meal2 from '../../images/home/meals-sample-2.jpg'
+import meal3 from '../../images/home/meals-sample-3.jpg'
 
-const Card = ({ img, info, footer }) => {
-    const [flip, setFlip] = useState(false)
+// Icons
+import { BsInfoCircleFill } from 'react-icons/bs'
+import { MdClose } from 'react-icons/md'
+
+
+
+function Card({ item }) {
+    const [showInfo, setShowInfo] = useState(false)
     return (
-        <>
-            <div
-                onClick={() => setFlip(!flip)}
-                className="w-[300px] min-h-[300px] bg-transparent cursor-pointer group perspective"
-            >
-                <div
-                    className={`relative preserve-3d ${flip ? 'my-rotate-y-180' : ''}  w-full h-full duration-1000`}
-                >
+        <div className='w-full relative'>
+            <img alt={item.text} src={item.img} className='object-cover' />
+            <button onClick={() => setShowInfo(!showInfo)} className='bg-yellow-400 p-2 rounded-lg transition-all ease-in-out duration-200 absolute top-5 right-5 z-[50]  text-white hover:text-bg-yellow-500 hover:scale-110 active:scale-90 drop-shadow-md'>
+                <BsInfoCircleFill className='text-[1.5rem]' />
+            </button>
+            <div className={`${showInfo ? 'translate-y-0' : 'translate-y-full'} select-none flex flex-col justify-evenly transition-all ease-in-out duration-200 bg-white opacity-90 h-[40%] p-8 md:p-10 bottom-0 w-full absolute`}>
+                <h3 className='text-lg lg:text-2xl font-bold lg:mb-4'>{item.info.name}</h3>
+                <ul>
+                    <li className='lg:text-lg'>Calories: {item.info.cal} cals</li>
+                    <li className='lg:text-lg'>Protein: {item.info.protein}g</li>
+                    <li className='lg:text-lg'>Carbs: {item.info.carbs}g</li>
+                    <li className='lg:text-lg'>Fats: {item.info.fats}g</li>
+                </ul>
 
-                    {/* Front Card */}
-                    <div className='backface-hidden absolute w-full h-max rounded-xl overflow-hidden'>
-
-                        {/* Card Image */}
-                        <div className='bg-neutral-200 h-[250px] flex justify-center items-center '>
-                            {img
-                                ? <img src={img} alt={img} />
-                                : <GiHotMeal className='text-secondary text-[7rem]' />
-                            }
-
-                        </div>
-                        {/* Card Footer */}
-                        <div className='bg-white py-5 px-4'>
-                            <p className='text-2xl text-neutral-700 font-bold uppercase text-center'>{footer}</p>
-                        </div>
-                    </div>
-
-                    {/* Back Card */}
-                    <div className="absolute my-rotate-y-180 backface-hidden w-full h-max rounded-xl overflow-hidden"
-                    >
-                        {/* Card Image */}
-                        <div className='bg-neutral-200 h-[250px] flex flex-col space-y-2 justify-center items-center'>
-                            <span className='text-lg font-bold uppercase'>
-                                {info.name}
-                            </span>
-                            <div>
-                                <p>Total Cals: {info.cal}cals</p>
-                                <p>Protein: {info.protein}g</p>
-                                <p>Carbs: {info.carbs}g</p>
-                                <p>Fats: {info.fats}g</p>
-                            </div>
-                        </div>
-                        {/* Card Footer */}
-                        <div className='bg-white py-5 px-4'>
-                            <p className='text-2xl text-neutral-700 font-bold uppercase text-center'>{footer}</p>
-                        </div>
-                    </div>
-
-
-                </div>
+                <button onClick={() => setShowInfo(false)} className='active:scale-90 transition-all ease-in-out duration-200 bg-neutral-200 px-2 rounded-lg absolute top-4 right-4 md:top-6 md:right-6 flex space-x-1 items-center'>
+                    <MdClose />
+                    <span>Close</span>
+                </button>
             </div>
-        </>
-
+        </div>
     )
 }
-
 function Meals() {
     const MealsContent = [
         {
             text: "Breakfast",
-            img: '',
+            img: meal1,
             info: {
                 name: 'Super French Toast',
                 cal: 256,
@@ -91,7 +61,7 @@ function Meals() {
         },
         {
             text: "Lunch",
-            img: '',
+            img: meal2,
             info: {
                 name: 'Anabolic Pesto Pasta',
                 cal: 256,
@@ -103,7 +73,7 @@ function Meals() {
         },
         {
             text: "Dinner",
-            img: '',
+            img: meal3,
             info: {
                 name: 'Creamy Chicken w/ Spinach',
                 cal: 256,
@@ -116,51 +86,48 @@ function Meals() {
 
 
     return (
-        <div className='bg-yellow-400 px-12 py-24 z-[30]'>
+        <div className='bg-neutral-100 px-10 py-24 z-[30] flex flex-col md:flex-row-reverse lg:px-20 justify-around items-center'>
 
             {/* Header */}
-            <div>
-                <h1 className='text-5xl font-semibold text-center uppercase text-white'>
-                    Our Meals
-                </h1>
+            <div className='flex flex-col justify-around mb-12 md:mb-0 md:w-[45%]'>
+                <h2 className=' text-5xl tracking-tight font-bold text-center uppercase lg:mb-10 lg:text-7xl '>
+                    THE Meals<span className='text-yellow-500'>.</span>
+                </h2>
 
                 {/* Sub Header */}
-                <p className='text-center mt-5 text-neutral-700 sm:mx-48'>
-                    Our dishes are tailored to meet individual dietary needs. Order á la carte or opt for a meal plan. We offer Chef’s Choice, pre-chosen meal plans or Your Choice, fully customizable meal plans.
+                <p className='text-center text-base lg:text-xl mt-5 text-neutral-700 '>
+                    {`Our dishes are tailored to meet individual dietary needs. 
+                    Order á la carte or opt for a meal plan. We offer Chef’s Choice, 
+                    pre-chosen meal plans or Your Choice, fully customizable meal plans.`}
                 </p>
             </div>
 
+            {/* Content */}
+            <div className='w-[380px] md:w-[400px] lg:w-[500px]'>
+                <Swiper
+                    slidesPerView={1}
+                    modules={[Autoplay]}
+                    className=' rounded-xl overflow-hidden drop-shadow-xl cursor-grab active:cursor-grabbing'
+                    autoplay={{
+                        delay: 3,
+                        disableOnInteraction: true,
+                    }}
+                    freeMode={true}
+                    loop={true}
+                    speed={5000}
 
-
-            {/* Accent */}
-            <div className='absolute -top-20 right-10 brightness-[1] grayscale rotate-180'>
-                <img src={Accent} width={100} height={200} />
+                >
+                    {MealsContent.map((item) => (
+                        <SwiperSlide key={item.text} className=' w-full relative mb-5   flex items-center justify-center rounded-xl overflow-hidden'>
+                            <Card item={item} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
 
 
-            {/* Content */}
-            <ul className='hidden sm:visible  sm:flex sm:w-[90%] sm:mx-auto sm:justify-evenly sm:mt-8'>
-                {MealsContent.map((item) => (
-                    <li key={item.text} className='hover:drop-shadow-xl hover:scale-110 transition-all duration-200 ease-in-out  drop-shadow-sm  w-[25%]'>
-                        <Card info={item.info} footer={item.text} />
-                    </li>
-                ))}
-            </ul>
 
 
-            {/* Mobile Swiper */}
-            <Swiper
-                slidesPerView={1}
-                modules={[Scrollbar]}
-                scrollbar={{ draggable: true }}
-                className='sm:hidden'
-            >
-                {MealsContent.map((item) => (
-                    <SwiperSlide key={item.text} className='py-10 mb-10  flex items-center justify-center '>
-                        <Card info={item.info} footer={item.text} />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
 
         </div>
     )

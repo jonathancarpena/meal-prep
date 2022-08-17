@@ -56,7 +56,7 @@ function Account() {
     }
 
     return (
-        <div className='pt-[10rem] px-10 sm:px-20 pb-20 text-neutral-700 '>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20 text-neutral-700 '>
             <div className='bg-white rounded-xl p-5 drop-shadow-xl max-w-3xl mx-auto'>
                 <h1 className='text-neutral-700 text-3xl mb-5'>
                     <MdPerson className='inline-block mb-1' /> Account

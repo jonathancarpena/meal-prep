@@ -1,9 +1,4 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-
-// API
-import axios from 'axios'
-
-
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = []
 
@@ -15,19 +10,6 @@ export const bagSlice = createSlice({
         addToBag: (state, action) => {
             const initialBag = JSON.parse(JSON.stringify(current(state)))
             const results = [...initialBag, action.payload]
-            // const combinedResults = results.filter((item, idx) => {
-            //     if (idx !== 0) {
-            //         if (results[idx - 1]._id === item._id) {
-            //             results[idx - 1].qty += item.qty
-            //             console.log('same')
-            //             return null
-            //         } else {
-            //             return item
-            //         }
-            //     } else {
-            //         return item
-            //     }
-            // })
             let combinedResults = []
             const uniqueIDs = []
             results.forEach((item) => {
@@ -40,16 +22,13 @@ export const bagSlice = createSlice({
                     itemToUpdate.qty += item.qty
                 }
             })
-
-
             return [...combinedResults]
         },
         removeFromBag: (state, action) => {
             return state.filter((item) => item._id !== action.payload._id)
         },
         updateQtyBag: (state, action) => {
-            const { qty, index, _id } = action.payload
-
+            const { qty, index } = action.payload
             const currentState = JSON.parse(JSON.stringify(current(state)))
             const updatedIndex = {
                 ...currentState[index],

@@ -7,11 +7,10 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // API
-import { post_AddMeal, put_UpdateMeal, IMAGE_API } from '../../../lib/api/index'
+import { post_AddMeal, put_UpdateMeal } from '../../../lib/api/index'
 
 // Icons
-import { GiCookingPot } from 'react-icons/gi'
-import { MdSave, MdOutlineFileUpload, MdEdit, MdCheck, MdClose } from 'react-icons/md'
+import { MdSave, MdOutlineFileUpload, MdClose } from 'react-icons/md'
 import { BsPlusCircle } from 'react-icons/bs'
 
 // Styles
@@ -25,7 +24,7 @@ const Name = ({ name, setName, error }) => {
                 <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className='w-[80%] sm:w-fit px-2 mb-5 flex items-center text-neutral-700 text-3xl  ring-2 ring-neutral-400 focus:outline-none'
+                    className='w-[80%] lg:w-fit px-2 mb-5 flex items-center text-neutral-700 text-3xl  ring-2 ring-neutral-400 focus:outline-none'
                 />
                 {error &&
                     <span className='text-red-500 text-sm font-semibold ml-2'>Please provide a name for this meal</span>
@@ -265,12 +264,12 @@ const Img = ({ img, setImg }) => {
     }
     return (
 
-        <div className='relative max-w-[400px] max-h-[400px] min-w-[300px] min-h-[300px] sm:max-w-[300px] sm:max-h-[300px] sm:min-w-[500px] sm:min-h-[500px] bg-transparent flex justify-center items-center'>
+        <div className='relative max-w-[400px] max-h-[400px] min-w-[300px] min-h-[300px] lg:max-w-[300px] lg:max-h-[300px] lg:min-w-[500px] lg:min-h-[500px] bg-transparent flex justify-center items-center'>
 
 
             {display
                 ? <img src={display} alt={display} className='w-full h-full object-center object-cover rounded-xl overflow-hidden ' />
-                : <span className='bg-neutral-400 sm:w-[500px] sm:h-[500px] w-full h-full min-w-[300px] min-h-[300px] flex justify-center items-center rounded-lg' >
+                : <span className='bg-neutral-400 lg:w-[500px] lg:h-[500px] w-full h-full min-w-[300px] min-h-[300px] flex justify-center items-center rounded-lg' >
 
                 </span>
             }
@@ -302,7 +301,7 @@ const SaveButton = ({ handleFormSubmit }) => {
         <div className='absolute top-4 right-5 '>
             <button onClick={handleFormSubmit} className='h-[45px] text-lg text-neutral-500 flex space-x-2 items-center border-2 border-neutral-400 rounded-xl px-4 py-1 hover:bg-neutral-400 hover:text-white transition-all duration-200 ease-in-out'>
                 <MdSave />
-                <span className='hidden sm:inline-block'>Save Meal</span>
+                <span className='hidden lg:inline-block'>Save Meal</span>
             </button>
         </div>
     )
@@ -389,7 +388,7 @@ function AddMeal() {
     }
 
     return (
-        <div className='pt-[10rem] px-10 sm:px-20 pb-20'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
             <div className='bg-white rounded-xl p-5 drop-shadow-xl relative'>
 
                 <Name
@@ -402,7 +401,7 @@ function AddMeal() {
                 />
 
 
-                <div className='flex flex-col space-y-5 sm:space-y-0 sm:flex-row sm:space-x-5'>
+                <div className='flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-5'>
                     <Img
                         img={img}
                         setImg={setImg}

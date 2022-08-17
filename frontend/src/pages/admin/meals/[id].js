@@ -24,7 +24,6 @@ import fileInputStyles from '../../../components/Admin/styles/fileInputStyles.cs
 
 // Components
 import Loading from '../../../components/Admin/Loading'
-import axios from 'axios'
 
 const Name = ({ name, handleUpdate }) => {
     const [edit, setEdit] = useState()
@@ -52,7 +51,7 @@ const Name = ({ name, handleUpdate }) => {
                     <input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        className='px-2 ring-2 w-[80%] sm:w-fit focus:outline-none'
+                        className='px-2 ring-2 w-[80%] lg:w-fit focus:outline-none'
                     />
                     <div className='flex '>
                         <MdCheck onClick={(e) => handleFormSubmit(e, true)} className='text-3xl cursor-pointer inline-block ml-2' />
@@ -460,12 +459,12 @@ const Img = ({ img, name, handleUpdate }) => {
     }
     return (
 
-        <div className='relative max-w-[400px] max-h-[400px] min-w-[300px] min-h-[300px] sm:max-w-[300px] sm:max-h-[300px] sm:min-w-[500px] sm:min-h-[500px] bg-transparent flex justify-center items-center'>
+        <div className='relative max-w-[400px] max-h-[400px] min-w-[300px] min-h-[300px] lg:max-w-[300px] lg:max-h-[300px] lg:min-w-[500px] lg:min-h-[500px] bg-transparent flex justify-center items-center'>
             {!edit &&
                 <>
                     {display.official
                         ? <img src={`${IMAGE_API}/${display.official}`} alt={display.official} className='w-full h-full object-center object-cover rounded-xl overflow-hidden' />
-                        : <span className='bg-neutral-400 sm:w-[500px] sm:h-[500px] w-full h-full min-w-[300px] min-h-[300px] flex justify-center items-center rounded-lg' >
+                        : <span className='bg-neutral-400 lg:w-[500px] lg:h-[500px] w-full h-full min-w-[300px] min-h-[300px] flex justify-center items-center rounded-lg' >
                             <GiCookingPot className='text-white text-[10rem]' />
                         </span>
                     }
@@ -553,7 +552,7 @@ function SingleMeal() {
                     setActive(res.active)
                 })
         }
-    }, [])
+    }, [_id, meal])
 
     useEffect(() => {
         if (meal !== null) {
@@ -580,7 +579,7 @@ function SingleMeal() {
     }
 
     return (
-        <div className='pt-[10rem] px-10 sm:px-20 pb-20'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
             <div className='bg-white rounded-xl p-5 drop-shadow-xl relative'>
 
                 <Name
@@ -588,7 +587,7 @@ function SingleMeal() {
                     name={meal.name}
                 />
 
-                <div className='flex space-x-2 items-center absolute right-5 top-[45%] sm:top-5 sm:right-5'>
+                <div className='flex space-x-2 items-center absolute right-5 top-[45%] lg:top-5 lg:right-5'>
                     <DeleteButton handleRemoveMeal={handleRemoveMeal} />
                     <StatusToggle
                         active={active}
@@ -598,7 +597,7 @@ function SingleMeal() {
                 </div>
 
 
-                <div className='flex flex-col space-y-5 sm:space-y-0 sm:flex-row sm:space-x-5'>
+                <div className='flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-5'>
 
                     <Img
                         name={meal.name}

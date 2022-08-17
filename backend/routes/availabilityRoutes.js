@@ -17,12 +17,12 @@ router.get("/", get_AllDates)
 //@desc     POST add new available dates
 //@route    POST /api/availability/add
 ///@access  Admin
-router.post("/add", post_AddDate)
+router.post("/add", auth, post_AddDate)
 
 //@desc     DELETE remove date
 //@route    DELETE /api/availability/remove/:day
 ///@access  Admin
-router.delete("/remove/:day", delete_removeDate)
+router.delete("/remove/:day", auth, delete_removeDate)
 
 
 export default router;

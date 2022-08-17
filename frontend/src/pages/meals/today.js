@@ -29,7 +29,7 @@ function Today() {
             get_TodaysMeals()
                 .then(data => setContent([...data]))
         }
-    }, [])
+    }, [content])
 
     useEffect(() => {
         if (content !== null) {

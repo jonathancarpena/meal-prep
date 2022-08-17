@@ -35,7 +35,7 @@ function AdminCalendar({ orders }) {
         } else {
             setActivity([])
         }
-    }, [date])
+    }, [date, orders])
 
 
 
@@ -44,6 +44,7 @@ function AdminCalendar({ orders }) {
             <BsCalendar2EventFill className='text-2xl text-neutral-700' />
         </button>
     ));
+
     return (
         <div className='bg-white rounded-xl p-5 drop-shadow-xl z-[50]'>
 

@@ -72,7 +72,7 @@ function ActiveMeals({ meals }) {
             const newArray = meals.filter((item) => item.active === true)
             setActiveMenu([...newArray])
         }
-    }, [])
+    }, [activeMenu.length, meals])
 
     async function handleToggleActive(_id, name) {
         const userConfirm = window.confirm(`Are you sure you want to make ${name} inactive?`)

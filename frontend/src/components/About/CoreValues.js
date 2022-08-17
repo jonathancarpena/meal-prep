@@ -24,8 +24,8 @@ function CoreValues() {
         },
     ]
     return (
-        <div className='bg-primary-300'>
-            <div className='bg-primary-300 relative sm:bottom-14 pt-[6rem] pb-14 rounded-t-[3rem] px-20'>
+        <div className='bg-[#333333]'>
+            <div className='bg-[#333333] relative sm:bottom-14 pt-[6rem] pb-14 rounded-t-[3rem] px-20'>
                 <h1 className='text-center text-white uppercase text-4xl sm:text-5xl  font-extrabold'>
                     Meal Fresh Core Values
                 </h1>

@@ -17,12 +17,12 @@ function Practices() {
             </span>
         },
         {
-            text: 'Packed with Protein',
-            img: <img src={Meal2} />
+            text: 'Packed w/ Protein',
+            img: <img src={Meal2} alt='packed-with-protein' />
         },
         {
             text: 'Always Fresh',
-            img: <img src={Meal3} />
+            img: <img src={Meal3} alt='always-fresh' />
         },
         {
             text: 'Certified Delicious',
@@ -30,38 +30,23 @@ function Practices() {
         },
     ]
     return (
-        <div className='bg-yellow-400 relative z-10'>
+        <div className='bg-neutral-100 relative z-10'>
 
-            <div className='bg-yellow-500 w-[90%] mx-auto rounded-t-3xl '>
-                <div className=' z-[50] text-center py-20'>
+            <div className='bg-yellow-400 w-[95%] lg:w-[90%] mx-auto rounded-t-3xl  z-[50] text-center py-24 flex flex-col justify-center items-center'>
+                <h2 className=' text-white text-4xl tracking-tight font-bold text-center uppercase lg:mb-10 lg:text-6xl '>
+                    WHAT TO EXPECT<span className='text-neutral-700'>:</span>
+                </h2>
 
-                    <h1 className='mx-16 sm:mx-0 text-white font-bold text-3xl tracking-tighter'>
-                        EVERY MEAL IS CHEF-PREPARED
-                    </h1>
-
-                    <ul className='hidden sm:flex sm:w-full sm:justify-evenly sm:mt-12'>
-                        {PracticesContent.map((item) => (
-                            <li key={item.text} className='flex flex-col items-center justify-center space-y-5 text-white'>
-                                <div className='flex justify-center max-h-[60px]'>
-                                    {item.img}
-                                </div>
-                                <span className='text-lg font-semibold'>{item.text}</span>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <div className='sm:hidden grid grid-cols-2 mt-12 gap-5 mx-auto w-full'>
-                        {PracticesContent.map((item) => (
-                            <div key={item.text} className='m-5 flex flex-col items-center justify-center space-y-5 text-white'>
-                                <div className='flex justify-center max-h-[100px] w-[100px]'>
-                                    {item.img}
-                                </div>
-                                <span className='text-lg font-semibold'>{item.text}</span>
+                <ul className=' mt-12 lg:mt-0 grid grid-cols-2 gap-10 md:grid-cols-4 lg:gap-20 lg:px-20'>
+                    {PracticesContent.map((item) => (
+                        <li key={item.text} className='select-none cursor-default hover:scale-110 transition-all ease-in-out duration-300 w-[150px] h-[150px] lg:w-[170px] lg:h-[170px] rounded-xl flex flex-col items-center justify-center space-y-5 text-white bg-neutral-700  drop-shadow-xl'>
+                            <div className='flex justify-center max-h-[60px] '>
+                                {item.img}
                             </div>
-                        ))}
-                    </div>
-
-                </div>
+                            <span className='lg:text-lg font-semibold '>{item.text}</span>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )

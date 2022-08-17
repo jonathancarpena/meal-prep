@@ -24,17 +24,17 @@ router.get("/:_id", get_SingleOrder)
 //@desc     GET all orders
 //@route    GET /api/orders
 ///@access  Admin
-router.get("/", get_AllOrders)
+router.get("/", auth, get_AllOrders)
 
 //@desc     DELETE remove order
 //@route    DELETE /api/orders?id=:_id
 ///@access  Admin
-router.delete("/:_id", delete_RemoveOrder)
+router.delete("/:_id", auth, delete_RemoveOrder)
 
 //@desc     PUT update order
 //@route    PUT /api/orders?id=:_id
 ///@access  Admin
-router.put("/:_id", put_updateOrder)
+router.put("/:_id", auth, put_updateOrder)
 
 
 export default router;

@@ -31,14 +31,14 @@ function SingleMeal() {
         }
 
 
-    }, [])
+    }, [_id, meal])
 
     useEffect(() => {
         if (meal !== null && similarMeals === null) {
             get_SimilarMeals(meal.type)
                 .then(data => setSimilarMeals([...data]))
         }
-    }, [meal])
+    }, [meal, similarMeals])
 
     useEffect(() => {
         if (meal !== null && similarMeals !== null) {

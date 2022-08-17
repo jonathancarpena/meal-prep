@@ -1,4 +1,4 @@
-import React from 'react'
+import Myself from '../../images/about/myself.jpg'
 
 function Main() {
     return (
@@ -6,9 +6,8 @@ function Main() {
             <div className='flex flex-col rounded-xl pt-10 w-full sm:max-w-[100rem]   sm:flex-row'>
 
                 {/* Image */}
-
                 <div className=' text-white font-semibold text-3xl border-[15px] border-white  h-[600px] w-full sm:max-w-xl  flex items-center justify-center bg-yellow-400 drop-shadow-xl z-20 sm:min-w-[500px] sm:min-h-[800px] sm:max-h-[800px]'>
-                    Image
+                    <img src={Myself} alt='myself' className='object-cover' />
                 </div>
 
 

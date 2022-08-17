@@ -24,7 +24,7 @@ function Success() {
         } else {
             dispatch(clearBag())
         }
-    }, [])
+    }, [dispatch, navigate, state])
 
     return (
         <div className='mt-[90px] min-h-[70vh] bg-neutral-100 py-20  sm:px-20 px-10 flex flex-col space-y-10 justify-center items-center'>

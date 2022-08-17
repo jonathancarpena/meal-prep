@@ -9,7 +9,7 @@
 // This data is provided by Nutritionix and is an estimate only. 
 
 
-export default [
+const sample = [
     {
         _id: 1,
         active: false,
@@ -141,3 +141,5 @@ export default [
     },
 
 ]
+
+export default sample

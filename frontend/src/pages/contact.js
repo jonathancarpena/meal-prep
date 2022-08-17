@@ -130,13 +130,13 @@ function Contact() {
             setTimeout(() => {
                 handleFormReset()
                 setLoading(false)
-                alert('Message was sent!')
+                alert("Thank you your message was sent! We'll get back to you in 24-48 hours.")
             }, [2000])
         }
     }
     return (
-        <div className='mt-[90px] min-h-screen p-10 sm:p-20 bg-neutral-200'>
-            <div className="flex flex-col space-y-5 bg-white rounded-xl p-5 drop-shadow-xl">
+        <div className='mt-[90px]  min-h-[91vh] p-10 sm:p-20 bg-neutral-100 flex justify-center items-center'>
+            <div className="flex flex-col space-y-5 bg-white rounded-xl p-5 drop-shadow-xl max-w-[700px]">
                 <h1 className='font-semibold text-4xl'>
                     Contact Us
                 </h1>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import moment from 'moment'
 
 // API
@@ -103,21 +102,21 @@ const Details = ({ customer, placed, reserved }) => {
 
             <div className='flex flex-col space-y-1 text-neutral-700 '>
 
-                <p className='flex items-center space-x-2 text-base sm:text-lg'>
+                <p className='flex items-center space-x-2 text-base lg:text-lg'>
                     <MdPerson className='inline-block text-lg' />
                     <span>{customer.first_name} {customer.last_name}</span>
                 </p>
-                <p className='flex items-center space-x-2 text-base sm:text-lg'>
+                <p className='flex items-center space-x-2 text-base lg:text-lg'>
                     <MdMail className='inline-block text-lg' />
                     <span>{customer.email} </span>
                 </p>
 
-                <p className='flex items-center space-x-2 text-base sm:text-lg'>
+                <p className='flex items-center space-x-2 text-base lg:text-lg'>
                     <MdPayment className='inline-block text-lg' />
                     <span>Order Placed on: {moment(placed).format('dddd MMM DD, YYYY')}</span>
                 </p>
 
-                <p className='flex items-center space-x-2 text-base sm:text-lg'>
+                <p className='flex items-center space-x-2 text-base lg:text-lg'>
                     <MdDateRange className='inline-block text-lg' />
                     <span>Order Booked for: </span>
                     <span className='font-semibold underline-offset-1 underline'>{moment(reserved).format('dddd MMM DD, YYYY')}</span>
@@ -173,7 +172,7 @@ function SingleOrder() {
                     setCompleted(updatedOrder.completed)
                 })
         }
-    }, [])
+    }, [_id, order, token])
 
     useEffect(() => {
         if (order !== null) {
@@ -189,7 +188,7 @@ function SingleOrder() {
     }
 
     return (
-        <div className='pt-[10rem] px-10 sm:px-20 pb-20'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
             <div className='bg-white rounded-xl  drop-shadow-xl '>
 
                 <div className='relative p-5 border-b-4'>

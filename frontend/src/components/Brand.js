@@ -1,8 +1,8 @@
 import React from 'react'
 
 // Icons
-import { FaLeaf, FaSpinner } from 'react-icons/fa'
-import { MdRedo } from 'react-icons/md'
+import { FaLeaf } from 'react-icons/fa'
+
 
 
 function Brand({ isDarkBg = false, onClick = null, sx }) {

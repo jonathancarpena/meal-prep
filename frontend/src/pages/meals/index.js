@@ -4,14 +4,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // API
-import axios from 'axios'
 import { get_AllMeals } from '../../lib/api'
 
 // Components
 import MealGrid from '../../components/Meals/MealGrid'
 
 // Icons
-import { FiChevronRight } from 'react-icons/fi'
 import {
     MdBreakfastDining,
     MdLunchDining,
@@ -31,7 +29,7 @@ function Today() {
                     setContent([...data])
                 })
         }
-    }, [])
+    }, [content])
 
     useEffect(() => {
         if (content !== null) {

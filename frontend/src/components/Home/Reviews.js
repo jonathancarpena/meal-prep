@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useRef, useCallback } from 'react'
 
 
 // Import Swiper React components
@@ -56,12 +56,12 @@ function Reviews() {
         },
     ]
     return (
-        <div className='py-24 bg-neutral-200'>
+        <div className='py-32 bg-[#333333] rounded-2xl'>
 
             {/* Header */}
-            <h1 className='text-3xl mx-10 font-bold uppercase text-center text-neutral-700'>
-                What People Have To Say
-            </h1>
+            <h2 className=' text-white text-5xl tracking-tight font-bold text-center uppercase lg:mb-10 lg:text-7xl '>
+                See What People are saying<span className='text-yellow-500'>.</span>
+            </h2>
 
             {/* Reviews */}
             <div className='max-w-[1000px] relative mx-auto mt-16'>

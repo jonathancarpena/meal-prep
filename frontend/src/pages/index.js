@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 
 // Components
 import Action from '../components/Home/Action';

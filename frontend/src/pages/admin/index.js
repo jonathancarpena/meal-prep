@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import moment from 'moment'
 
 // Router
 import { Link, useNavigate } from 'react-router-dom'
@@ -140,7 +139,6 @@ const ForgotPasswordModal = ({ hashCode, setForgotPassword }) => {
     const [code, setCode] = useState(["", "", "", "", "", ""])
     const [error, setError] = useState(false)
     const [passwordReset, setPasswordReset] = useState(false)
-    const [visiblePassword, setVisiblePassword] = useState(false)
     const [newPassword, setNewPassword] = useState('')
     const [reTypePassword, setReTypePassword] = useState('')
 
@@ -157,7 +155,7 @@ const ForgotPasswordModal = ({ hashCode, setForgotPassword }) => {
             })
         }
 
-    }, [formInputRef])
+    }, [formInputRef, code, passwordReset])
 
     function handleInputChange(e, index) {
         const copy = [...code]
@@ -327,7 +325,7 @@ function Admin() {
         if (ready) {
             navigate('/admin/dashboard')
         }
-    }, [ready])
+    }, [ready, navigate])
 
     useEffect(() => {
         if (forgotPassword) {
@@ -336,10 +334,10 @@ function Admin() {
     }, [forgotPassword])
 
     return (
-        <div className='h-screen flex justify-center items-center'>
+        <div className='relative w-full h-screen flex justify-center items-center'>
 
             <Link to='/'>
-                <span className='fixed top-10 left-10 flex items-center'>
+                <span className='absolute top-10 left-10 flex items-center'>
                     <FiHome className='inline-block mr-2' /> Home
                 </span>
             </Link>

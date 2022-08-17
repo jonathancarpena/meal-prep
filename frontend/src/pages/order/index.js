@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
+// Context
+import { useStoreOpen } from '../../lib/context/StoreOpenProvider';
+
 // API
 import { get_AllDates, post_AddOrder, IMAGE_API } from '../../lib/api/index'
 
@@ -18,16 +21,16 @@ import { validateEmail } from '../../lib/utils';
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { removeFromBag, updateQtyBag } from '../../redux/features/bag/bagSlice'
+import { updateSession } from '../../redux/features/session/sessionSlice'
 
 // Icons 
 import { BsBag, BsCalendar2Event } from 'react-icons/bs'
 import { GiCookingPot } from 'react-icons/gi'
-import { CgSpinnerTwo } from 'react-icons/cg'
-import { FaMinus, FaPlus, FaCheck } from 'react-icons/fa'
+import { FaInstagram, FaMinus, FaPlus, FaStoreSlash } from 'react-icons/fa'
 
 const EmptyBag = () => {
     return (
-        <div className='flex flex-col min-h-[75vh] sm:min-h-[60vh] space-y-5 justify-center items-center text-neutral-700'>
+        <div className='flex flex-col min-h-[75vh] lg:min-h-[60vh] space-y-5 justify-center items-center text-neutral-700'>
             <h1 className='text-4xl font-semibold'>Nothing inside Your Bag</h1>
             <BsBag className='text-[4rem]' />
         </div>
@@ -83,8 +86,8 @@ const ContactInfo = ({ fName, setFName, lName, setLName, email, setEmail, errors
     return (
         <div className='flex flex-col space-y-2'>
             <span className='text-xl text-neutral-700 underline underline-offset-2 mb-3'>Contact Info:</span>
-            <form className='mx-5 sm:w-[50%] flex flex-col space-y-2'>
-                <div className='flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-2 '>
+            <form className='mx-5 lg:w-[50%] flex flex-col space-y-2'>
+                <div className='flex flex-col space-y-2 lg:space-y-0 lg:flex-row lg:space-x-2 '>
                     <FormInput
                         error={errors.fName}
                         value={fName}
@@ -118,7 +121,7 @@ const ReserveDate = ({ availableDates, reserveDate, setReserveDate }) => {
     const today = moment(Date.now())
     const CustomDateButton = React.forwardRef(({ value, onClick }, ref) => (
         <button className="w-max text-neutral-700" onClick={onClick} ref={ref}>
-            <BsCalendar2Event className='text-2xl sm:text-3xl inline-block' />
+            <BsCalendar2Event className='text-2xl lg:text-3xl inline-block' />
         </button>
     ));
 
@@ -161,7 +164,7 @@ const ReserveDate = ({ availableDates, reserveDate, setReserveDate }) => {
             <div className='flex flex-col space-y-2'>
                 <span className='text-xl text-neutral-700 underline underline-offset-2'>Pick Up Date:</span>
                 <div className='ml-5 flex items-center space-x-3'>
-                    <span className='text-neutral-700 text-xl sm:text-3xl   '>
+                    <span className='text-neutral-700 text-xl lg:text-3xl   '>
                         {moment(reserveDate).format('dddd MMM DD, YYYY')}
                     </span>
                     <div>
@@ -201,6 +204,7 @@ const ListOfBagItems = ({ ulRef, bag }) => {
                     }
                 }
                 dispatch(updateQtyBag({ qty: newQty, index }))
+                dispatch(updateSession())
             }
             return (
                 <div className='flex border-2 rounded-xl'>
@@ -235,7 +239,7 @@ const ListOfBagItems = ({ ulRef, bag }) => {
         }
         return (
             <>
-                <li className={`hidden sm:flex sm:space-x-10 ${index === bag.length - 1 ? '' : 'mb-10'} `}>
+                <li className={`hidden lg:flex lg:space-x-10 ${index === bag.length - 1 ? '' : 'mb-10'} `}>
                     {/* Product */}
                     <div className='flex flex-1 space-x-10'>
                         <div className='w-[120px] h-[120px] flex rounded-2xl justify-center items-center bg-neutral-300 overflow-hidden'>
@@ -265,7 +269,7 @@ const ListOfBagItems = ({ ulRef, bag }) => {
                 </li>
 
                 {/* Mobile */}
-                <li className={`sm:hidden flex flex-col space-y-3 ${index === bag.length - 1 ? '' : 'mb-10'}  `}>
+                <li className={`lg:hidden flex flex-col space-y-3 ${index === bag.length - 1 ? '' : 'mb-10'}  `}>
                     {/* Product */}
                     <div className='flex space-x-5'>
 
@@ -334,7 +338,7 @@ const Summary = ({ bag, handleSubmitOrder }) => {
     }
     generateBagTotal()
     return (
-        <div className='py-5 flex flex-col space-y-8 sm:w-[400px] sm:self-end '>
+        <div className='py-5 flex flex-col space-y-8 lg:w-[400px] lg:self-end '>
             <div className='flex justify-between items-center'>
                 <span>Subtotal ({generateBagLength()} items)</span>
                 <span className='font-semibold text-xl'>${generateBagTotal()}.00</span>
@@ -351,10 +355,9 @@ const Summary = ({ bag, handleSubmitOrder }) => {
 
 function Order() {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const bag = useSelector(state => state.bag)
     const [loading, setLoading] = useState(true)
-    const [success, setSuccess] = useState(false)
+    const open = useStoreOpen()
 
 
     // Contact Form 
@@ -375,13 +378,13 @@ function Order() {
                     setReserveDate(data[0].day)
                 })
         }
-    }, [])
+    }, [availableDates])
 
     useEffect(() => {
         if (availableDates !== null && reserveDate !== null) {
             setLoading(false)
         }
-    }, [availableDates])
+    }, [availableDates, reserveDate])
 
 
 
@@ -471,22 +474,39 @@ function Order() {
         }
     }
 
+    if (!open) {
+        return <div className=' bg-neutral-100 p-10 lg:p-20  text-neutral-500 min-h-[91vh] flex flex-col space-y-2 justify-center items-center'>
+
+            <div className='flex flex-col items-center justify-center'>
+                <FaStoreSlash className='text-[4rem] ' />
+                <h1 className='text-[2rem] lg:text-[2.5rem] tracking-tight font-bold text-center'>All Booked for Today.</h1>
+            </div>
+
+            <div className='flex flex-col justify-center items-center'>
+                <h2 className='text-lg lg:text-xl'>Check out the Instagram for any Updates!</h2>
+                <a href="/" target="_blank" rel="noopener noreferrer" className='flex space-x-1 items-center text-lg lg:text-xl border-b-4 border-b-neutral-500'>
+                    <FaInstagram className='inline-block mt-0.5' /> <span>@itsncarpena</span>
+                </a>
+            </div>
+
+        </div>
+    }
     if (loading) {
         return (
             <Loading />
         )
     }
     return (
-        <div className='mt-[90px] bg-neutral-200 p-10 sm:p-20  min-h-[91vh] '>
+        <div className='mt-[90px] bg-neutral-100 p-10 lg:p-20  min-h-[91vh] flex justify-center items-center'>
 
             {bag.length === 0
                 ? <EmptyBag />
-                : <div className='p-5 bg-white drop-shadow-xl rounded-xl'>
+                : <div className='p-5 bg-white drop-shadow-xl rounded-xl w-full max-w-[1200px]'>
                     <h1 className='text-4xl font-semibold mb-5 border-b-4 w-max border-b-yellow-400'>
                         Your Bag ({bag.length})
                     </h1>
                     <div className='flex flex-col space-y-10'>
-                        <div className='flex flex-col  space-y-10 sm:space-x-10 sm:flex-row sm:space-y-0'>
+                        <div className='flex flex-col  space-y-10 lg:space-x-10 lg:flex-row lg:space-y-0'>
                             <ContactInfo
                                 fName={fName}
                                 setFName={setFName}

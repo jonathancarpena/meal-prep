@@ -32,7 +32,7 @@ const MobileMenu = () => {
         dispatch(clearAuth())
     }
     return (
-        <div className={`${mobileMenu ? 'translate-x-0' : 'translate-x-full'} transition-all ease-in-out duration-300 fixed inset-0 z-[150] h-screen bg-white flex flex-col text-neutral-700 sm:hidden`}>
+        <div className={`${mobileMenu ? 'translate-x-0' : 'translate-x-full'} transition-all ease-in-out duration-300 fixed inset-0 z-[150] h-screen bg-white flex flex-col text-neutral-700 lg:hidden`}>
             <div className='flex items-center justify-end px-6  h-[120px] top-10'>
 
                 <MdOutlineClose
@@ -64,29 +64,11 @@ const MobileMenu = () => {
     )
 }
 function Navbar() {
-    const NavColorShift = 'bg-neutral-100 top-0 drop-shadow-xl'
     const activeLinkStyles = 'underline underline-offset-2 underline-neutral-800'
-    const [shiftColor, setShiftColor] = useState({ boolean: false, value: NavColorShift['initial'] })
-    const [scroll] = useDeviceScroll()
+    const scroll = useDeviceScroll()
     const dispatch = useDispatch()
     const location = useLocation()
-    useEffect(() => {
-        if (scroll >= 25) {
-            if (!shiftColor.boolean) {
-                setShiftColor({
-                    boolean: true,
-                    value: NavColorShift
-                })
-            }
-        } else {
-            if (shiftColor.boolean) {
-                setShiftColor({
-                    boolean: false,
-                    value: ''
-                })
-            }
-        }
-    }, [scroll])
+
 
     function handleLogout() {
         dispatch(clearAuth())
@@ -94,14 +76,14 @@ function Navbar() {
 
 
     return (
-        <nav className={`fixed flex justify-between items-center px-10 sm:px-20 z-[100] ${shiftColor.boolean ? shiftColor.value : 'top-10'} transition-all ease-linear duration-200 w-screen h-[90px] bg-neutral-200 text-neutral-700`}>
+        <nav className={`${scroll > 25 ? 'top-0 drop-shadow-xl bg-white' : 'top-10 bg-neutral-100'}  rounded-b-xl max-w-[1980px] fixed flex justify-between items-center px-10 lg:px-20 z-[100]  transition-all ease-linear duration-200 w-screen h-[90px]  text-neutral-700`}>
             <h1 className='font-bold text-4xl '>
                 <Link to='/admin/dashboard'>
                     Admin
                 </Link>
             </h1>
 
-            <ul className='hidden sm:flex items-center space-x-5 mr-10'>
+            <ul className='hidden lg:flex items-center space-x-5 mr-10'>
                 {AdminNavbarLinks.map((item) => (
                     <li
                         key={`nav-item-${item}`}
@@ -116,7 +98,7 @@ function Navbar() {
                 </button>
             </ul>
 
-            <div className='sm:hidden flex space-x-3 items-center'>
+            <div className='lg:hidden flex space-x-3 items-center'>
                 <MdMenu onClick={() => dispatch(showMobileMenu())} className='text-[2rem] cursor-pointer' />
             </div>
 
@@ -138,10 +120,10 @@ function AdminLayout({ children }) {
         }
     }, [location])
     return (
-        <>
-            {showNavbar && <Navbar />}
+        <div className='w-full max-w-[1980px]'>
+            {(showNavbar) && <Navbar />}
             {children}
-        </>
+        </div>
     )
 }
 

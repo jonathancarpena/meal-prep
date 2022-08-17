@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
 import moment from 'moment';
+
+// Context
+import StoreOpenProvider from './lib/context/StoreOpenProvider';
+
 // Router
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { clearAuth } from './redux/features/admin/adminSlice';
+import { clearBag } from './redux/features/bag/bagSlice';
 
 // Components
 import Layout from './components/Layout'
@@ -24,18 +29,19 @@ import NotFound from './pages/404'
 
 // Admin Pages
 import Admin from './pages/admin'
-import Admin_Dashboard from './pages/admin/dashboard';
-import Admin_Activity from './pages/admin/activity';
-import Admin_Meals from './pages/admin/meals'
-import Admin_SingleMeal from './pages/admin/meals/[id]'
-import Admin_AddMeal from './pages/admin/meals/add'
-import Admin_Orders from './pages/admin/orders'
-import Admin_SingleOrder from './pages/admin/orders/[id]'
-import Admin_Account from './pages/admin/account'
+import AdminDashboard from './pages/admin/dashboard';
+import AdminActivity from './pages/admin/activity';
+import AdminMeals from './pages/admin/meals'
+import AdminSingleMeal from './pages/admin/meals/[id]'
+import AdminAddMeal from './pages/admin/meals/add'
+import AdminOrders from './pages/admin/orders'
+import AdminSingleOrder from './pages/admin/orders/[id]'
+import AdminAccount from './pages/admin/account'
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate()
   const { ready } = useSelector((state) => state.admin)
+
   if (!ready) {
     navigate('/')
   }
@@ -48,6 +54,7 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   const dispatch = useDispatch()
   const { ready, expires } = useSelector(state => state.admin)
+  const session = useSelector((state) => state.session)
 
   useEffect(() => {
     if (ready) {
@@ -57,124 +64,129 @@ function App() {
         dispatch(clearAuth())
       }
     }
-  }, [])
+  }, [ready, expires, dispatch])
 
+
+  useEffect(() => {
+    const sinceLastSession = moment(Date.now()).diff(moment(session), 'hours')
+    if (sinceLastSession > 20) {
+      dispatch(clearBag())
+    }
+  }, [dispatch, session])
   return (
-    <Layout>
-      <Routes>
+    <StoreOpenProvider>
+      <Layout>
+        <Routes>
 
-        {/* 404 */}
-        <Route path='*' element={<NotFound />} />
+          {/* 404 */}
+          <Route path='*' element={<NotFound />} />
 
-        {/* Landing  */}
-        <Route exact path='/' element={<Home />} />
+          {/* Landing  */}
+          <Route exact path='/' element={<Home />} />
 
-        {/* About  */}
-        <Route exact path='/about' element={<About />} />
+          {/* About  */}
+          <Route exact path='/about' element={<About />} />
 
-        {/* Contact  */}
-        <Route exact path='/contact' element={<Contact />} />
+          {/* Contact  */}
+          <Route exact path='/contact' element={<Contact />} />
 
-        {/* Order */}
-        <Route exact path='/order' element={<Order />} />
+          {/* Order */}
+          <Route exact path='/order' element={<Order />} />
 
-        {/* Success */}
-        <Route exact path='/order/success/:order_id' element={<OrderSuccess />} />
+          {/* Success */}
+          <Route exact path='/order/success/:order_id' element={<OrderSuccess />} />
 
-        {/* All Meals  */}
-        <Route exact path='/meals' element={<AllMeals />} />
+          {/* All Meals  */}
+          <Route exact path='/meals' element={<AllMeals />} />
 
-        {/* Today Meals  */}
-        <Route exact path='/meals/today' element={<TodayMeals />} />
+          {/* Today Meals  */}
+          <Route exact path='/meals/today' element={<TodayMeals />} />
 
-        {/* Single Meal */}
-        <Route exact path='/meals/:name/:_id' element={<SingleMeal />} />
+          {/* Single Meal */}
+          <Route exact path='/meals/:name/:_id' element={<SingleMeal />} />
 
-        {/* Admin */}
-        <Route exact path="/admin" element={<Admin />} />
+          {/* Admin */}
+          <Route exact path="/admin" element={<Admin />} />
 
-        {/*  */}
-        {/* Protected Routes */}
-        {/*  */}
+          {/*  */}
+          {/* Protected Routes */}
+          {/*  */}
 
-        {/* Dashboard */}
-        <Route exact path="/admin/dashboard"
-          element={
-            <ProtectedRoute>
-              <Admin_Dashboard />
-            </ProtectedRoute>
-          }
-        />
+          {/* Dashboard */}
+          <Route exact path="/admin/dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Activity */}
-        <Route exact path="/admin/activity"
-          element={
-            <ProtectedRoute>
-              <Admin_Activity />
-            </ProtectedRoute>
-          }
-        />
+          {/* Activity */}
+          <Route exact path="/admin/activity"
+            element={
+              <ProtectedRoute>
+                <AdminActivity />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Meals */}
-        <Route exact path="/admin/meals"
-          element={
-            <ProtectedRoute>
-              <Admin_Meals />
-            </ProtectedRoute>
-          }
-        />
+          {/* Meals */}
+          <Route exact path="/admin/meals"
+            element={
+              <ProtectedRoute>
+                <AdminMeals />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Single Meal */}
-        <Route exact path="/admin/meals/:name/:_id"
-          element={
-            <ProtectedRoute>
-              <Admin_SingleMeal />
-            </ProtectedRoute>
-          }
-        />
+          {/* Single Meal */}
+          <Route exact path="/admin/meals/:name/:_id"
+            element={
+              <ProtectedRoute>
+                <AdminSingleMeal />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Single Meal */}
-        <Route exact path="/admin/meals/add"
-          element={
-            <ProtectedRoute>
-              <Admin_AddMeal />
-            </ProtectedRoute>
-          }
-        />
+          {/* Single Meal */}
+          <Route exact path="/admin/meals/add"
+            element={
+              <ProtectedRoute>
+                <AdminAddMeal />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Orders */}
-        <Route exact path="/admin/orders"
-          element={
-            <ProtectedRoute>
-              <Admin_Orders />
-            </ProtectedRoute>
-          }
-        />
+          {/* Orders */}
+          <Route exact path="/admin/orders"
+            element={
+              <ProtectedRoute>
+                <AdminOrders />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Single Order */}
-        <Route exact path="/admin/orders/:number/:_id"
-          element={
-            <ProtectedRoute>
-              <Admin_SingleOrder />
-            </ProtectedRoute>
-          }
-        />
+          {/* Single Order */}
+          <Route exact path="/admin/orders/:number/:_id"
+            element={
+              <ProtectedRoute>
+                <AdminSingleOrder />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Account */}
-        <Route exact path="/admin/account"
-          element={
-            <ProtectedRoute>
-              <Admin_Account />
-            </ProtectedRoute>
-          }
-        />
+          {/* Account */}
+          <Route exact path="/admin/account"
+            element={
+              <ProtectedRoute>
+                <AdminAccount />
+              </ProtectedRoute>
+            }
+          />
 
-
-
-
-
-      </Routes>
-    </Layout>
+        </Routes>
+      </Layout>
+    </StoreOpenProvider>
   );
 }
 

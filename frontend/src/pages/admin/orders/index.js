@@ -109,7 +109,7 @@ function AdminOrders() {
                     setOrders([...data])
                 })
         }
-    }, [])
+    }, [meals, orders, token])
 
     useEffect(() => {
         if (meals !== null && orders !== null) {
@@ -130,7 +130,7 @@ function AdminOrders() {
         return <Loading />
     }
     return (
-        <div className='pt-[10rem] px-10 sm:px-20 pb-20'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
             <div className='bg-white rounded-xl p-5 drop-shadow-xl'>
 
                 {/* Header */}
@@ -139,7 +139,7 @@ function AdminOrders() {
                 </h1>
 
                 {/* List of Orders */}
-                <div className='sm:flex flex-col hidden'>
+                <div className='lg:flex flex-col hidden'>
 
                     <div className='grid grid-cols-6 gap-5 border-b-2 py-2 px-4'>
                         {DashHeaders.map((item) => (
@@ -180,7 +180,7 @@ function AdminOrders() {
                 </div>
 
                 {/* Mobile: List of Orders */}
-                <div className='flex flex-col sm:hidden '>
+                <div className='flex flex-col lg:hidden '>
 
                     <div className={`${orders.length > 6 ? 'overflow-y-scroll' : ''} flex flex-col max-h-[700px]`}>
                         <div className='sticky top-0 w-max overflow-visible bg-white grid grid-cols-[50px_100px_100px_150px_100px] gap-5 border-b-2 py-2 px-4 '>

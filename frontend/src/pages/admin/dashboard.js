@@ -32,7 +32,7 @@ function Dashboard() {
                     setOrders([...data])
                 })
         }
-    }, [])
+    }, [meals, orders, token])
 
     useEffect(() => {
         if (meals !== null && orders !== null) {
@@ -46,8 +46,7 @@ function Dashboard() {
         )
     }
     return (
-        <div className='pt-[170px] px-10 sm:px-20 pb-20'>
-
+        <div className='pt-[170px] px-10 lg:px-20 pb-20'>
 
             <div className='flex flex-col space-y-10'>
                 <AdminCalendar orders={orders} />
