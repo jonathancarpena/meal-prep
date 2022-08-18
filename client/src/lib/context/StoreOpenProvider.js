@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-
+import { get_AllDates } from "../api";
 
 const StoreContext = createContext()
 
@@ -12,9 +12,8 @@ export function useStoreOpen() {
 function StoreOpenProvider({ children }) {
     const [open, setOpen] = useState(false)
     useEffect(() => {
-        fetch('/api/availability')
-            .then((res) => res.json())
-            .then((data) => {
+        get_AllDates(_id)
+            .then(data => {
                 if (data.length > 0) {
                     setOpen(true)
                 }
