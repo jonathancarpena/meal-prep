@@ -12,14 +12,14 @@ import cors from 'cors'
 import cookieParser from "cookie-parser"
 
 // Database
-import connectDB from './backend/config/db.js'
+import connectDB from './config/db.js'
 
 // Routes
-import adminRoutes from './backend/routes/adminRoutes.js'
-import availabilityRoutes from './backend/routes/availabilityRoutes.js'
-import mealRoutes from './backend/routes/mealsRoute.js'
-import orderRoutes from './backend/routes/ordersRoute.js'
-import imageRoutes from './backend/routes/imageRoute.js'
+import adminRoutes from './routes/adminRoutes.js'
+import availabilityRoutes from './routes/availabilityRoutes.js'
+import mealRoutes from './routes/mealsRoute.js'
+import orderRoutes from './routes/ordersRoute.js'
+import imageRoutes from './routes/imageRoute.js'
 
 dotenv.config()
 
@@ -51,9 +51,9 @@ app.use("/api/orders", orderRoutes)
 app.use('/image', imageRoutes)
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "frontend", "build")))
+    app.use(express.static(path.join(__dirname, "client", "build")))
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "frontend", "build", "index.html"))
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"))
     })
 }
 
