@@ -12,7 +12,7 @@ export function useStoreOpen() {
 function StoreOpenProvider({ children }) {
     const [open, setOpen] = useState(false)
     useEffect(() => {
-        get_AllDates(_id)
+        get_AllDates()
             .then(data => {
                 if (data.length > 0) {
                     setOpen(true)
