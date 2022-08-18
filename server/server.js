@@ -51,11 +51,16 @@ app.use("/api/orders", orderRoutes)
 app.use('/image', imageRoutes)
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "client", "build")))
+    // app.use(express.static(path.join(__dirname, "client", "build")))
+    // app.get("*", (req, res) => {
+    //     res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+    // })
+    app.use(express.static(path.join(__dirname.split("server")[0], "client", "build")))
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+        res.sendFile(path.join(__dirname.split("server")[0], "client", "build", "index.html"))
     })
 }
+
 
 
 // Port server is running on

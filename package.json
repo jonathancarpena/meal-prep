@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "concurrently \"npm run start --prefix server\" \"npm run start --prefix client\""
+		"dev": "concurrently \"npm run server --prefix server\" \"npm run start --prefix client\"",
+		"start": "npm run start --prefix server"
 	},
 	"repository": {
 		"type": "git",
@@ -16,7 +17,8 @@
 		"url": "https://github.com/jonathancarpena/meal-prep/issues"
 	},
 	"homepage": "https://github.com/jonathancarpena/meal-prep#readme",
-	"dependencies": {
+	"dependencies": {},
+	"devDependencies": {
 		"concurrently": "^7.3.0"
 	}
 }
