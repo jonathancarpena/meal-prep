@@ -1,5 +1,5 @@
-import moment from "moment"
-export default [
+const moment = require("moment")
+module.exports = [
     {
         date_placed: moment(Date.now()).toDate(),
         book_date: moment(Date.now()).add(1, 'w').toDate(),

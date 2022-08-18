@@ -1,23 +1,22 @@
-import dotenv from "dotenv"
-dotenv.config()
+require('dotenv').config()
 
 // Models
-import Admin from './models/Admin.js'
-import Availability from './models/Availability.js'
-import Meal from './models/Meal.js'
-import Order from './models/Order.js'
+const Admin = require('./models/Admin.js')
+const Availability = require('./models/Availability.js')
+const Meal = require('./models/Meal.js')
+const Order = require('./models/Order.js')
 
 // Sample Data
-import adminData from './data/sample/admin.js'
-import availabilityData from './data/sample/availability.js'
-import mealData from './data/sample/meals.js'
-import orderData from './data/sample/orders.js'
+const adminData = require('./data/sample/admin.js')
+const availabilityData = require('./data/sample/availability.js')
+const mealData = require('./data/sample/meals.js')
+const orderData = require('./data/sample/orders.js')
 
 // Utils
-import { generateHashPassword } from './lib/utils.js'
+const { generateHashPassword } = require('./lib/utils.js')
 
 // MongoDB Connect
-import connectDB from './config/db.js'
+const connectDB = require('./config/db.js')
 
 
 
