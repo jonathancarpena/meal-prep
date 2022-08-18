@@ -1,0 +1,22 @@
+{
+	"name": "meal-prep",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "concurrently \"npm run start --prefix server\" \"npm run start --prefix client\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jonathancarpena/meal-prep.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jonathancarpena/meal-prep/issues"
+	},
+	"homepage": "https://github.com/jonathancarpena/meal-prep#readme",
+	"dependencies": {
+		"concurrently": "^7.3.0"
+	}
+}
