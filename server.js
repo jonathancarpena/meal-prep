@@ -59,7 +59,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 // Port server is running on
-const PORT = process.env.PORT || 5000
-app.listen(PORT,
+
+app.listen(process.env.PORT || 5000,
     () => console.log(`Server running on port ${PORT}`)
 )
