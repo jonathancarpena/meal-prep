@@ -4,8 +4,8 @@ import sampleOrders from '../db/sampleOrders'
 import sampleMeals from "../db/sampleMeals";
 import sampleBlockedDates from '../db/sampleBlockedDates'
 
-const BASE_API = 'https://nathan-meal-prep.herokuapp.com'
-export const IMAGE_API = 'https://nathan-meal-prep.herokuapp.com'
+const BASE_API = 'https://nathan-meal-prep.herokuapp.com/api'
+export const IMAGE_API = 'https://nathan-meal-prep.herokuapp.com/api'
 export const today = sampleMeals.filter((item) => item.active === true)
 
 export function mealById(_id) {
