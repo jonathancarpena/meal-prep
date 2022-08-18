@@ -37,7 +37,7 @@ export const Socials = [
 function Footer() {
 
     return (
-        <div className='bg-neutral-800 py-16 px-12 sm:px-80 rounded-t-2xl'>
+        <div className='bg-neutral-800 py-16 px-12 sm:px-80 '>
 
             {/* Links */}
             <div className=' flex flex-col space-y-12 sm:flex-row sm:space-y-0 sm:items-start sm:justify-between mb-10'>
