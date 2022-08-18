@@ -1,11 +1,16 @@
-import { genSalt, hash } from 'bcrypt'
+const bcrypt = require('bcrypt')
 
-export const generateHashPassword = async (password) => {
-    const salt = await genSalt()
-    const hashPassword = await hash(password, salt)
+const generateHashPassword = async (password) => {
+    const salt = await bcrypt.genSalt()
+    const hashPassword = await bcrypt.hash(password, salt)
     return hashPassword
 }
 
-export function replaceSpaces(str) {
+function replaceSpaces(str) {
     return str.replace(/\s+/g, '-').toLowerCase();
+}
+
+module.exports = {
+    generateHashPassword,
+    replaceSpaces
 }

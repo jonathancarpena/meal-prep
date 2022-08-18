@@ -1,14 +1,11 @@
-import pkg from "mongoose"
-import moment from "moment"
-const { Schema, ObjectId, model } = pkg
-
+const mongoose = require('mongoose')
 // Example {
 //     email: 'misterjack@email.com',
 //     phone: 1234567890,
 //     password: 'test123',
 // }
 
-const adminSchema = new Schema({
+const adminSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -25,5 +22,5 @@ const adminSchema = new Schema({
     },
 })
 
-const Admin = model('admin', adminSchema)
-export default Admin
+const Admin = mongoose.model('admin', adminSchema)
+module.exports = Admin

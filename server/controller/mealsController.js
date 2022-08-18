@@ -1,12 +1,7 @@
-import Meals from '../models/Meal.js'
+const Meals = require('../models/Meal.js')
+const fs = require('fs')
 
-import path, { dirname } from 'path'
-import { fileURLToPath } from 'url';
-import fs from 'fs'
-
-
-const __dirname = path.dirname(dirname(fileURLToPath(import.meta.url)))
-const imageFolder = `${__dirname}\\data\\images\\`
+const imageFolder = `${__dirname.split('controller')[0]}\\data\\images`
 // get_AllMeals,
 // get_TodaysMeals,
 // get_SingleMeal,
@@ -15,7 +10,7 @@ const imageFolder = `${__dirname}\\data\\images\\`
 // put_updateMeal,
 
 // Public Access
-export const get_AllMeals = async (req, res) => {
+const get_AllMeals = async (req, res) => {
     console.log('GET: All Meals')
 
     try {
@@ -29,7 +24,7 @@ export const get_AllMeals = async (req, res) => {
     }
 }
 
-export const get_TodaysMeals = async (req, res) => {
+const get_TodaysMeals = async (req, res) => {
     console.log('GET: Todays Meals')
 
     try {
@@ -45,7 +40,7 @@ export const get_TodaysMeals = async (req, res) => {
 }
 
 // Public Access
-export const get_SingleMeal = async (req, res) => {
+const get_SingleMeal = async (req, res) => {
     console.log('GET: Single Meal')
     const { _id } = req.params
 
@@ -60,7 +55,7 @@ export const get_SingleMeal = async (req, res) => {
     }
 }
 // Public Access
-export const get_SimilarMeals = async (req, res) => {
+const get_SimilarMeals = async (req, res) => {
     console.log('GET: Similar Meals')
     const { filter } = req.params
 
@@ -78,7 +73,7 @@ export const get_SimilarMeals = async (req, res) => {
 
 
 // Admin Access
-export const post_AddMeal = async (req, res) => {
+const post_AddMeal = async (req, res) => {
     console.log('POST: Add Meal')
 
     try {
@@ -93,7 +88,7 @@ export const post_AddMeal = async (req, res) => {
 }
 
 // Admin Access
-export const delete_RemoveMeal = async (req, res) => {
+const delete_RemoveMeal = async (req, res) => {
     console.log('DELETE: Delete Meal')
     const { _id } = req.params
 
@@ -121,7 +116,7 @@ export const delete_RemoveMeal = async (req, res) => {
 }
 
 // Admin Access
-export const put_updateMeal = async (req, res) => {
+const put_updateMeal = async (req, res) => {
     console.log('PUT: Update Meal')
     const { _id } = req.params
     let body = { ...req.body }
@@ -149,6 +144,16 @@ export const put_updateMeal = async (req, res) => {
             message: "Server Error"
         })
     }
+}
+
+module.exports = {
+    get_AllMeals,
+    get_TodaysMeals,
+    get_SingleMeal,
+    get_SimilarMeals,
+    post_AddMeal,
+    delete_RemoveMeal,
+    put_updateMeal
 }
 
 

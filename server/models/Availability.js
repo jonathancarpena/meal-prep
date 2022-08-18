@@ -1,6 +1,5 @@
-import pkg from "mongoose"
-import moment from "moment"
-const { Schema, ObjectId, model } = pkg
+const mongoose = require('mongoose')
+
 
 // Example [
 //     "Wed May 10 2022 00:00:00 GMT-0700 (Pacific Daylight Time)",
@@ -9,7 +8,7 @@ const { Schema, ObjectId, model } = pkg
 //     "Fri May 14 2022 00:00:00 GMT-0700 (Pacific Daylight Time)",
 // ]
 
-const availabilitySchema = new Schema({
+const availabilitySchema = new mongoose.Schema({
     day: {
         type: Date,
         required: false,
@@ -17,5 +16,7 @@ const availabilitySchema = new Schema({
 
 })
 
-const Avaibility = model('avaibility', availabilitySchema)
-export default Avaibility
+const Avaibility = mongoose.model('avaibility', availabilitySchema)
+
+
+module.exports = Avaibility

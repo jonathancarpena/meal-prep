@@ -1,6 +1,4 @@
-import pkg from "mongoose"
-import moment from "moment"
-const { Schema, ObjectId, model } = pkg
+const mongoose = require('mongoose')
 
 // Example {
 //     _id: 1,
@@ -19,7 +17,7 @@ const { Schema, ObjectId, model } = pkg
 //     }
 // }
 
-const NutritionSchema = new Schema({
+const NutritionSchema = new mongoose.Schema({
     calories: {
         type: Number,
         required: false,
@@ -42,7 +40,7 @@ const NutritionSchema = new Schema({
     },
 
 })
-const mealSchema = new Schema({
+const mealSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         required: false,
@@ -90,5 +88,5 @@ const mealSchema = new Schema({
 
 })
 
-const Meal = model('meal', mealSchema)
-export default Meal
+const Meal = mongoose.model('meal', mealSchema)
+module.exports = Meal

@@ -1,15 +1,13 @@
-import path, { dirname } from 'path'
-import { fileURLToPath } from 'url';
-import fs from 'fs'
+const fs = require('fs')
 
 // Image Uploader
-import multer from "multer";
-import sharp from 'sharp'
+const multer = require("multer")
+const sharp = require('sharp')
 
 // Utils
-import { replaceSpaces } from '../lib/utils.js'
+const { replaceSpaces } = require('../lib/utils.js')
 
-const __dirname = path.dirname(dirname(fileURLToPath(import.meta.url)))
+
 const imageFolder = `${__dirname}\\data\\images\\`
 
 function checkIfDuplicates(filename) {
@@ -37,23 +35,7 @@ function checkIfDuplicates(filename) {
 }
 
 console.log('MIDDLEWARE: Upload')
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, imageFolder)
-//     },
-//     filename: (req, file, cb) => {
-//         cb(null, new Date().toISOString().replace(/:/g, '-') + '_' + file.originalname)
-//     }
-// })
 
-
-// const upload = multer({
-//     storage,
-//     fileFilter: function (req, file, cb) {
-//         checkIfDuplicates(file.originalname)
-//         cb(null, true);
-//     }
-// })
 
 const storage = multer.memoryStorage()
 
@@ -65,7 +47,7 @@ const upload = multer({
     }
 })
 
-export async function resizeImg(req, res, next) {
+async function resizeImg(req, res, next) {
 
     const fileExt = req.file.originalname.split('.')[1]
     const fileName = `${replaceSpaces(req.body.text)}.${fileExt}`
@@ -84,5 +66,8 @@ export async function resizeImg(req, res, next) {
 
 }
 
-export default upload
+module.exports = {
+    upload,
+    resizeImg
+}
 

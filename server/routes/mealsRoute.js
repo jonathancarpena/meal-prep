@@ -1,5 +1,5 @@
-import { Router } from "express";
-import {
+const express = require('express')
+const {
     get_AllMeals,
     get_TodaysMeals,
     get_SingleMeal,
@@ -7,14 +7,11 @@ import {
     post_AddMeal,
     delete_RemoveMeal,
     put_updateMeal,
-} from "../controller/mealsController.js";
-import auth from "../middleware/auth.js";
-import upload, { resizeImg } from '../middleware/upload.js'
+} = require("../controller/mealsController.js")
+const auth = require("../middleware/auth.js")
+const { resizeImg, upload } = require('../middleware/upload.js')
 
-
-
-
-const router = Router();
+const router = express.Router();
 
 //@desc     GET all meals
 //@route    GET /api/meals
@@ -63,4 +60,4 @@ router.put(
 )
 
 
-export default router;
+module.exports = router

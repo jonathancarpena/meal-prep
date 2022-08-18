@@ -1,5 +1,5 @@
-import Orders from '../models/Order.js'
-import moment from 'moment'
+const Orders = require('../models/Order.js')
+const moment = require('moment')
 
 // post_AddOrder,
 // get_AllOrders,
@@ -8,7 +8,7 @@ import moment from 'moment'
 // put_updateOrder,
 
 // Public Access
-export const post_AddOrder = async (req, res) => {
+const post_AddOrder = async (req, res) => {
     console.log('POST: Add Order')
 
     try {
@@ -29,7 +29,7 @@ export const post_AddOrder = async (req, res) => {
 }
 
 // Admin Access
-export const get_AllOrders = async (req, res) => {
+const get_AllOrders = async (req, res) => {
     console.log('GET: All Orders')
     try {
         const allOrders = await Orders.find()
@@ -43,7 +43,7 @@ export const get_AllOrders = async (req, res) => {
 }
 
 // Admin Access
-export const get_SingleOrder = async (req, res) => {
+const get_SingleOrder = async (req, res) => {
     console.log('GET: Single Order')
     const { _id } = req.params
     try {
@@ -59,7 +59,7 @@ export const get_SingleOrder = async (req, res) => {
 
 
 // Admin Access
-export const delete_RemoveOrder = async (req, res) => {
+const delete_RemoveOrder = async (req, res) => {
     console.log('DELETE: Delete Order')
     const { _id } = req.params
     try {
@@ -76,7 +76,7 @@ export const delete_RemoveOrder = async (req, res) => {
 }
 
 // Admin Access
-export const put_updateOrder = async (req, res) => {
+const put_updateOrder = async (req, res) => {
     console.log('PUT: Update Order')
     const { _id } = req.params
     try {
@@ -88,6 +88,14 @@ export const put_updateOrder = async (req, res) => {
             message: "Server Error"
         })
     }
+}
+
+module.exports = {
+    post_AddOrder,
+    get_AllOrders,
+    get_SingleOrder,
+    delete_RemoveOrder,
+    put_updateOrder
 }
 
 

@@ -1,12 +1,12 @@
-import Availability from '../models/Availability.js'
-import moment from 'moment'
+const Availability = require('../models/Availability.js')
+const moment = require('moment')
 
 // get_AllDates,
 // post_AddDate,
 // put_updateAvailability,
 
 // Admin Access
-export const get_AllDates = async (req, res) => {
+const get_AllDates = async (req, res) => {
     console.log('GET: All Date')
 
     try {
@@ -33,7 +33,7 @@ export const get_AllDates = async (req, res) => {
 }
 
 // Admin Access
-export const post_AddDate = async (req, res) => {
+const post_AddDate = async (req, res) => {
     console.log('POST: Add Date')
     console.log(req.body)
     try {
@@ -51,7 +51,7 @@ export const post_AddDate = async (req, res) => {
 
 
 // Admin Access
-export const delete_removeDate = async (req, res) => {
+const delete_removeDate = async (req, res) => {
     console.log('DELETE: Remove Date')
     const { day } = req.params
 
@@ -76,3 +76,8 @@ export const delete_removeDate = async (req, res) => {
     }
 }
 
+module.exports = {
+    get_AllDates,
+    post_AddDate,
+    delete_removeDate
+}

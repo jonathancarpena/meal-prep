@@ -1,19 +1,19 @@
-import Admin from '../models/Admin.js'
+require('dotenv').config()
+const Admin = require('../models/Admin.js')
 
 // Auth
-import jwt from 'jsonwebtoken'
-import { compare } from 'bcrypt'
-import { generateHashPassword } from '../lib/utils.js'
-import dotenv from "dotenv"
-import moment from 'moment'
+const jwt = require('jsonwebtoken')
+const bcrypt = 'bcrypt'
+const { generateHashPassword } = require('../lib/utils.js')
+const moment = require('moment')
 
-dotenv.config()
+
 
 // post_Login,
 // put_UpdateProfile
 
 // Admin Access
-export const post_Login = async (req, res) => {
+const post_Login = async (req, res) => {
     console.log('POST: Login Event')
     try {
         // Get user input
@@ -47,7 +47,7 @@ export const post_Login = async (req, res) => {
                 })
             }
 
-            const isMatch = await compare(password, admin.password)
+            const isMatch = await bcrypt.compare(password, admin.password)
             if (!isMatch) {
                 return res.status(401).json({
                     message: "Invalid Credentials"
@@ -77,7 +77,7 @@ export const post_Login = async (req, res) => {
 }
 
 // Admin Access
-export const put_UpdateProfile = async (req, res) => {
+const put_UpdateProfile = async (req, res) => {
 
     const { _id } = req.admin
     const { oldPassword, password, oldEmail, email, oldPhone, phone, condition } = req.body
@@ -92,7 +92,7 @@ export const put_UpdateProfile = async (req, res) => {
                     message: "Input Required"
                 })
             }
-            const isMatch = await compare(oldPassword, admin.password)
+            const isMatch = await bcrypt.compare(oldPassword, admin.password)
             if (isMatch) {
                 const newPassword = await generateHashPassword(password)
                 const updatedAdmin = await Admin.findByIdAndUpdate(_id, { password: newPassword })
@@ -145,4 +145,8 @@ export const put_UpdateProfile = async (req, res) => {
             message: "Server Error"
         })
     }
+}
+
+module.exports = {
+    post_Login, put_UpdateProfile
 }

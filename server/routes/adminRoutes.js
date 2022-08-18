@@ -1,10 +1,11 @@
-import { Router } from "express";
-const router = Router();
-import {
+const express = require('express')
+const router = express.Router();
+const {
     post_Login,
     put_UpdateProfile
-} from '../controller/adminController.js';
-import auth from '../middleware/auth.js'
+} = require('../controller/adminController.js');
+
+const auth = require('../middleware/auth.js')
 
 //@desc     POST log admin in
 //@route    POST /api/admin/login
@@ -18,5 +19,4 @@ router.post("/login", post_Login)
 router.put("/update", auth, put_UpdateProfile)
 
 
-
-export default router;
+module.exports = router

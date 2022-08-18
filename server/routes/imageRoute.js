@@ -1,12 +1,9 @@
-import { Router } from "express";
-import {
-    get_Image,
-
-} from "../controller/imageController.js";
+const express = require('express')
+const get_Image = require("../controller/imageController.js")
 
 
 
-const router = Router();
+const router = express.Router();
 
 //@desc     GET image
 //@route    GET /api/image/:imgName
@@ -14,4 +11,4 @@ const router = Router();
 router.get("/:imgName", get_Image)
 
 
-export default router;
+module.exports = router;

@@ -1,6 +1,6 @@
-import pkg from "mongoose"
-import moment from "moment"
-const { Schema, ObjectId, model } = pkg
+const mongoose = require('mongoose')
+const moment = require("moment")
+
 
 // Example {
 //     date_placed: moment(Date.now()),
@@ -17,9 +17,9 @@ const { Schema, ObjectId, model } = pkg
 //     completed: false,
 // },
 
-const OrderItemSchema = new Schema({
+const OrderItemSchema = new mongoose.Schema({
     _id: {
-        type: ObjectId,
+        type: mongoose.ObjectId,
         required: true,
     },
     qty: {
@@ -27,7 +27,7 @@ const OrderItemSchema = new Schema({
         required: true,
     }
 })
-const CustomerSchema = new Schema({
+const CustomerSchema = new mongoose.Schema({
     first_name: {
         type: String,
         required: true
@@ -41,7 +41,7 @@ const CustomerSchema = new Schema({
         required: true
     }
 })
-const orderSchema = new Schema({
+const orderSchema = new mongoose.Schema({
     date_placed: {
         type: Date,
         required: false,
@@ -70,5 +70,5 @@ const orderSchema = new Schema({
     }
 })
 
-const Order = model('order', orderSchema)
-export default Order
+const Order = mongoose.model('order', orderSchema)
+module.exports = Order

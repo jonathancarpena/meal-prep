@@ -1,12 +1,9 @@
-import dotenv from "dotenv"
-import pkg from 'mongoose'
-
-dotenv.config()
-const { connect } = pkg
+require('dotenv').config()
+const mongoose = require('mongoose')
 
 async function connectDB() {
     try {
-        await connect(process.env.MONGO_URI, {
+        await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })
@@ -17,4 +14,4 @@ async function connectDB() {
     }
 }
 
-export default connectDB;
+module.exports = connectDB;

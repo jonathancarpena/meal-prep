@@ -1,13 +1,13 @@
-import { Router } from "express";
-import {
+const express = require('express')
+const {
     get_AllDates,
     post_AddDate,
     delete_removeDate,
-} from "../controller/availabilityController.js";
-import auth from "../middleware/auth.js";
+} = require("../controller/availabilityController.js")
+const auth = require("../middleware/auth.js")
 
 
-const router = Router();
+const router = express.Router();
 
 //@desc     GET all available dates
 //@route    GET /api/availability
@@ -25,4 +25,4 @@ router.post("/add", auth, post_AddDate)
 router.delete("/remove/:day", auth, delete_removeDate)
 
 
-export default router;
+module.exports = router;

@@ -1,15 +1,15 @@
-import { Router } from "express";
-import {
+const express = require('express')
+const {
     get_AllOrders,
     get_SingleOrder,
     post_AddOrder,
     delete_RemoveOrder,
     put_updateOrder,
-} from "../controller/ordersController.js";
-import auth from "../middleware/auth.js";
+} = require("../controller/ordersController.js")
+const auth = require("../middleware/auth.js");
 
 
-const router = Router();
+const router = express.Router();
 
 //@desc     POST add order
 //@route    POST /api/orders/add
@@ -37,4 +37,4 @@ router.delete("/:_id", auth, delete_RemoveOrder)
 router.put("/:_id", auth, put_updateOrder)
 
 
-export default router;
+module.exports = router;

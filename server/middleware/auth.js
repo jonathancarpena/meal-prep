@@ -1,8 +1,6 @@
-import moment from "moment"
+require('dotenv').config()
+const jwt = require('jsonwebtoken')
 
-import dotenv from "dotenv"
-import jwt from 'jsonwebtoken'
-dotenv.config()
 
 const auth = async (req, res, next) => {
     let token = null
@@ -42,4 +40,4 @@ const auth = async (req, res, next) => {
 
 }
 
-export default auth
+module.exports = auth
