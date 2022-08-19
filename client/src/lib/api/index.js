@@ -6,6 +6,8 @@ import sampleBlockedDates from '../db/sampleBlockedDates'
 
 // Uncomment for Development
 // const BASE_API = 'http://localhost:5000/api'
+
+
 const BASE_API = 'https://nathan-meal-prep.herokuapp.com/api'
 
 export const today = sampleMeals.filter((item) => item.active === true)

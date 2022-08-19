@@ -135,7 +135,7 @@ function Contact() {
         }
     }
     return (
-        <div className='mt-[90px]  min-h-[91vh] p-10 sm:p-20 bg-neutral-100 flex justify-center items-center'>
+        <div className='mt-[90px]  min-h-[91vh] p-5 lg:p-20 bg-neutral-100 flex justify-center items-center'>
             <div className="flex flex-col space-y-5 bg-white rounded-xl p-5 drop-shadow-xl max-w-[700px]">
                 <h1 className='font-semibold text-4xl'>
                     Contact Us

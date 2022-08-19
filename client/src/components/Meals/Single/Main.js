@@ -39,11 +39,11 @@ function Main({ data }) {
         setQty(1)
     }
     return (
-        <div className='flex flex-col lg:flex-row lg:space-x-10'>
+        <div className='flex flex-col items-center lg:items-start lg:flex-row lg:space-x-10'>
             {/* Image */}
-            <div className={`${!img ? 'bg-neutral-300' : 'bg-white'}  w-full h-[400px] lg:w-[600px] lg:h-[600px] shrink flex justify-center items-center overflow-hidden `}>
+            <div className={`${!img ? 'bg-neutral-300' : ''}  w-[350px] h-[350px] lg:w-[600px] lg:h-[600px] shrink flex justify-center items-center overflow-hidden `}>
                 {img
-                    ? <Image src={img} alt={name} className='w-full h-full rounded-xl object-cover object-center' />
+                    ? <Image src={img} alt={name} sx='rounded-xl object-cover object-center' />
                     : <GiCookingPot className='text-white text-[7rem]' />
                 }
             </div>
@@ -52,7 +52,7 @@ function Main({ data }) {
             <div className='flex flex-col flex-none lg:w-[40%]'>
 
                 {/* Name */}
-                <div className={`${active ? 'mt-10' : 'my-10'}`}>
+                <div className={`${active ? 'mt-5' : 'my-5'}`}>
                     <h1 className='text-4xl font-semibold uppercase mb-4'>
                         {name}
                     </h1>
@@ -80,7 +80,7 @@ function Main({ data }) {
                     </div>
                     : <div className='w-full flex flex-col space-y-4 mb-10 mt-[-15px]'>
 
-                        <h2 className='select-none w-[80%] text-2xl text-white py-3 px-5 bg-yellow-400 opacity-60 text-center'>
+                        <h2 className='select-none w-[80%] text-xl lg:text-2xl text-white py-3 px-5 bg-yellow-400 opacity-60 text-center'>
                             Currently Not Serving
                         </h2>
                     </div>

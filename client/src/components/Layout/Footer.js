@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Brand from '../Brand'
 
 // Icons
-import { FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa'
+import { FaInstagram } from 'react-icons/fa'
 
 
 const quickLinks = [
@@ -15,8 +15,7 @@ const quickLinks = [
 ]
 
 const supportLinks = [
-    { text: 'terms & services', link: '/' },
-    { text: 'returns & refunds', link: '/' },
+    { text: 'returns & refunds', link: '/contact' },
     { text: 'contact us', link: '/contact' },
 ]
 
@@ -25,14 +24,7 @@ export const Socials = [
         icon: <FaInstagram className='text-4xl text-white' />,
         link: ''
     },
-    {
-        icon: <FaTwitter className='text-4xl text-white' />,
-        link: ''
-    },
-    {
-        icon: <FaTiktok className='text-4xl text-white' />,
-        link: ''
-    },
+
 ]
 function Footer() {
 
@@ -78,7 +70,7 @@ function Footer() {
                 {/* Socials */}
                 <div>
                     <h4 className='text-white font-bold text-3xl mb-6'>
-                        Our Socials
+                        Follow On Instagram
                     </h4>
 
                     <ul className='flex space-x-3'>

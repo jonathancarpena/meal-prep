@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { replaceSpaces } from '../../../lib/utils'
 
 // Import Swiper React components
+import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -23,8 +24,7 @@ import Image from '../../Image';
 function Recommended({ similarMeals }) {
     const navigate = useNavigate()
     const sliderRef = useRef(null);
-    const mobileSliderRef = useRef(null)
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
 
     const handlePrev = useCallback(() => {
         if (!sliderRef.current) return;
@@ -36,15 +36,7 @@ function Recommended({ similarMeals }) {
         sliderRef.current.swiper.slideNext();
     }, []);
 
-    const handleMobilePrev = useCallback(() => {
-        if (!mobileSliderRef.current) return;
-        mobileSliderRef.current.swiper.slidePrev();
-    }, []);
 
-    const handleMobileNext = useCallback(() => {
-        if (!mobileSliderRef.current) return;
-        mobileSliderRef.current.swiper.slideNext();
-    }, []);
 
     function handleNavigate(link) {
         navigate(link)
@@ -91,15 +83,17 @@ function Recommended({ similarMeals }) {
             </div>
 
             {/* Mobile Swiper */}
-            <div className='lg:hidden relative mt-[2rem] bg-white rounded-2xl p-10'>
+            <div className='lg:hidden relative mt-[2rem]   rounded-2xl mb-10'>
                 <Swiper
-                    ref={mobileSliderRef}
                     slidesPerView={1}
+                    modules={[Pagination]}
+                    pagination={{ clickable: true }}
                     loop={true}
-                    className={` w-[80%] rounded-2xl p-10`}
+                    className={` sm:hidden  bg-white rounded-2xl `}
                 >
+
                     {similarMeals.map((item, idx) => (
-                        <SwiperSlide key={`Meal-${idx}`} onClick={() => handleNavigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)} className='cursor-pointer flex flex-col justify-center items-center '>
+                        <SwiperSlide key={`Meal-${idx}`} onClick={() => handleNavigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)} className='mb-12 pt-10  cursor-pointer flex flex-col justify-center items-center '>
 
                             <div className='w-[200px] h-[200px] bg-neutral-200 flex items-center justify-center rounded-xl'>
                                 {item.img
@@ -110,18 +104,11 @@ function Recommended({ similarMeals }) {
                             <p className='text-lg text-center font-semibold text-neutral-700 uppercase'>
                                 {item.name}
                             </p>
-
-
                         </SwiperSlide>
                     ))}
                 </Swiper>
 
-                <span className='absolute top-[50%] -translate-y-[50%] left-10 cursor-pointer'>
-                    <GoChevronLeft className='text-yellow-500 text-5xl' onClick={handleMobilePrev} />
-                </span>
-                <span className='absolute top-[50%] -translate-y-[50%] right-10 cursor-pointer'>
-                    <GoChevronRight className='text-yellow-500 text-5xl' onClick={handleMobileNext} />
-                </span>
+
             </div>
 
         </div>

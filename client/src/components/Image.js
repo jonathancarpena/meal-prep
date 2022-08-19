@@ -23,7 +23,7 @@ function Image({ src, alt, width = "100%", height = "auto", sx }) {
     return (
         <>
             {!imageSrc
-                ? <div style={{ width: width, height: height }} className='bg-neutral-100 flex justify-center items-center'>
+                ? <div style={{ width: width, height: height }} className='bg-white flex justify-center items-center'>
                     {!error
                         ? <CgSpinner className='w-full h-full text-neutral-200 animate-spin' />
                         : <CgUnavailable className='w-full h-full text-neutral-200' />

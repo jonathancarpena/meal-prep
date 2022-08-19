@@ -31,8 +31,8 @@ import { FaInstagram, FaMinus, FaPlus, FaStoreSlash } from 'react-icons/fa'
 
 const EmptyBag = () => {
     return (
-        <div className='flex flex-col min-h-[75vh] lg:min-h-[60vh] space-y-5 justify-center items-center text-neutral-700'>
-            <h1 className='text-4xl font-semibold'>Nothing inside Your Bag</h1>
+        <div className='relative bottom-10 flex flex-col  space-y-5 justify-center items-center text-neutral-700'>
+            <h1 className='text-4xl font-semibold text-center'>Nothing inside Your Bag</h1>
             <BsBag className='text-[4rem]' />
         </div>
     )
