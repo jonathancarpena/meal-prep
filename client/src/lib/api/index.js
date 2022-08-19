@@ -5,8 +5,8 @@ import sampleMeals from "../db/sampleMeals";
 import sampleBlockedDates from '../db/sampleBlockedDates'
 
 // Uncomment for Development
-const BASE_API = 'http://localhost:5000/api'
-// const BASE_API = 'https://nathan-meal-prep.herokuapp.com/api'
+// const BASE_API = 'http://localhost:5000/api'
+const BASE_API = 'https://nathan-meal-prep.herokuapp.com/api'
 
 export const today = sampleMeals.filter((item) => item.active === true)
 
@@ -187,12 +187,6 @@ export async function put_UpdateOrder(token, id, body) {
 
 // AVAILABILITY //
 export async function get_AllDates() {
-    // const config = {
-    //     headers: {
-    //         Authorization: `Bearer ${token}`,
-    //         "Content-Type": "application/json"
-    //     }
-    // }
     const res = await axios.get(`${BASE_API}/availability`)
     return res.data
 }
