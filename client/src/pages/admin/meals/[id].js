@@ -24,6 +24,7 @@ import fileInputStyles from '../../../components/Admin/styles/fileInputStyles.cs
 
 // Components
 import Loading from '../../../components/Admin/Loading'
+import Image from '../../../components/Image'
 
 const Name = ({ name, handleUpdate }) => {
     const [edit, setEdit] = useState()

@@ -4,7 +4,10 @@ import sampleOrders from '../db/sampleOrders'
 import sampleMeals from "../db/sampleMeals";
 import sampleBlockedDates from '../db/sampleBlockedDates'
 
-const BASE_API = 'https://nathan-meal-prep.herokuapp.com/api'
+// Uncomment for Development
+const BASE_API = 'http://localhost:5000/api'
+// const BASE_API = 'https://nathan-meal-prep.herokuapp.com/api'
+
 export const IMAGE_API = 'https://nathan-meal-prep.herokuapp.com/image'
 export const today = sampleMeals.filter((item) => item.active === true)
 
@@ -114,36 +117,14 @@ export async function delete_RemoveMeal(token, id) {
 }
 
 export async function put_UpdateMeal(token, id, body) {
-    const imgInput = Object.keys(body).some((item) => item === 'img')
-    if (!imgInput) {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json"
-            }
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         }
-        const res = await axios.put(`${BASE_API}/meals/${id}`, body, config)
-        return res.data
-    } else {
-        const formData = new FormData()
-        formData.append('image', body.img)
-        formData.append('text', body.name)
-        const options = {
-            method: 'PUT',
-            body: formData,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-        try {
-            const res = await fetch(`${BASE_API}/meals/${id}`, options)
-            console.log(res)
-            return res
-        } catch (error) {
-            return null
-        }
-
     }
+    const res = await axios.put(`${BASE_API}/meals/${id}`, body, config)
+    return res.data
 
 }
 

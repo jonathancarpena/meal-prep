@@ -1,8 +1,5 @@
 import React, { useCallback, useRef } from 'react'
 
-// API
-import { IMAGE_API } from '../../../lib/api';
-
 // Router
 import { useNavigate } from 'react-router-dom';
 
@@ -19,6 +16,9 @@ import 'swiper/css/navigation';
 // Icons
 import { GiCookingPot } from 'react-icons/gi'
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
+
+// Components
+import Image from '../../Image';
 
 function Recommended({ similarMeals }) {
     const navigate = useNavigate()
@@ -68,7 +68,7 @@ function Recommended({ similarMeals }) {
                         <SwiperSlide key={`Meal-${idx}`} onClick={() => handleNavigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)} className='cursor-pointer flex flex-col justify-center items-center '>
                             <div className='w-[200px] h-[200px] bg-neutral-200 flex items-center justify-center rounded-xl'>
                                 {item.img
-                                    ? <img src={`${IMAGE_API}/${item.img}`} alt={item.name} className='w-full h-full object-center object-cover rounded-lg' />
+                                    ? <Image src={item.img} alt={item.name} className='w-full h-full object-center object-cover rounded-lg' />
                                     : <GiCookingPot className='w-[80%] h-[80%]  text-white' />
                                 }
                             </div>
@@ -103,7 +103,7 @@ function Recommended({ similarMeals }) {
 
                             <div className='w-[200px] h-[200px] bg-neutral-200 flex items-center justify-center rounded-xl'>
                                 {item.img
-                                    ? <img src={`${IMAGE_API}/${item.img}`} alt={item.name} className='w-full h-full object-center object-cover rounded-lg' />
+                                    ? <Image src={item.img} alt={item.name} className='w-full h-full object-center object-cover rounded-lg' />
                                     : <GiCookingPot className='w-[80%] h-[80%]  text-white' />
                                 }
                             </div>

@@ -22,6 +22,8 @@ import { MdStore, MdToggleOff, MdToggleOn } from 'react-icons/md'
 
 // Components
 import Loading from '../../../components/Admin/Loading'
+import Image from '../../../components/Image'
+
 const InfoDropdown = ({ meal }) => {
     const [showDetails, setShowDetails] = useState(false)
     const { nutrition } = meal
@@ -161,7 +163,7 @@ function AdminMeals() {
                                     {/* Image */}
                                     <Link to={`/admin/meals/${replaceSpaces(element.name)}/${element._id}`} >
                                         {element.img
-                                            ? <img src={`${IMAGE_API}/${element.img}`} alt={element.name} className='w-[50px] h-[50px] object-center object-cover rounded-lg overflow-hidden' />
+                                            ? <Image src={element.img} alt={element.name} width={50} height={50} sx='object-center object-cover rounded-lg overflow-hidden' />
                                             : <span className='bg-neutral-400 w-[50px] h-[50px] flex justify-center items-center rounded-lg' >
                                                 <GiCookingPot className='text-white text-3xl' />
                                             </span>
@@ -209,7 +211,7 @@ function AdminMeals() {
                                     {/* Image */}
                                     <Link to={`/admin/meals/${replaceSpaces(element.name)}/${element._id}`}>
                                         {element.img
-                                            ? <img src={`${IMAGE_API}/${element.img}`} alt={element.name} className='w-[50px] h-[50px] object-center object-cover rounded-lg overflow-hidden' />
+                                            ? <Image src={element.img} alt={element.name} width={50} height={50} sx='object-center object-cover rounded-lg overflow-hidden' />
                                             : <span className='bg-neutral-400 w-[50px] h-[50px] flex justify-center items-center rounded-lg' >
                                                 <GiCookingPot className='text-white text-3xl' />
                                             </span>

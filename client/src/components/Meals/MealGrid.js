@@ -6,9 +6,6 @@ import { useNavigate } from 'react-router-dom'
 // Utils
 import { replaceSpaces } from '../../lib/utils'
 
-// API
-import { IMAGE_API } from '../../lib/api'
-
 // Icons
 import { GiCookingPot } from 'react-icons/gi'
 import {
@@ -16,6 +13,9 @@ import {
     MdLunchDining,
     MdDinnerDining
 } from 'react-icons/md'
+
+// Components
+import Image from '../Image'
 
 
 
@@ -46,9 +46,9 @@ function MealGrid({ data }) {
                     className={` relative cursor-pointer sm:hover:drop-shadow-xl sm:hover:scale-110 transition-all duration-200 ease-in-out overflow-hidden h-[300px] w-[300px] rounded-b-xl drop-shadow-lg flex items-center justify-center`}>
 
                     {/* Image */}
-                    <div className={`${!item.img ? 'bg-neutral-300' : ''}  w-full h-full flex justify-center items-center `}>
+                    <div className={`${!item.img ? 'bg-neutral-300' : 'bg-white'}  w-full h-full flex justify-center items-center `}>
                         {item.img
-                            ? <img src={`${IMAGE_API}/${item.img}`} alt={item.name} />
+                            ? <Image src={`${item.img}`} />
                             : <GiCookingPot className='text-white text-[7rem] relative bottom-5' />
                         }
                     </div>

@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 
-// API
-import { IMAGE_API } from '../../../lib/api'
-
 // Redux
 import { useDispatch } from 'react-redux'
 import { addToBag } from '../../../redux/features/bag/bagSlice'
@@ -15,6 +12,9 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 
 // Context
 import { useStoreOpen } from '../../../lib/context/StoreOpenProvider'
+
+// Components
+import Image from '../../Image'
 
 function Main({ data }) {
     const { active, img, name, price, nutrition: { calories, protein, carbs, fats }, ingredients, description } = data
@@ -41,9 +41,9 @@ function Main({ data }) {
     return (
         <div className='flex flex-col lg:flex-row lg:space-x-10'>
             {/* Image */}
-            <div className={`${!img ? 'bg-neutral-300' : ''}  w-full h-[400px] lg:w-[600px] lg:h-[600px] shrink flex justify-center items-center overflow-hidden `}>
+            <div className={`${!img ? 'bg-neutral-300' : 'bg-white'}  w-full h-[400px] lg:w-[600px] lg:h-[600px] shrink flex justify-center items-center overflow-hidden `}>
                 {img
-                    ? <img src={`${IMAGE_API}/${img}`} alt={name} className='w-full h-full rounded-xl object-cover object-center' />
+                    ? <Image src={img} alt={name} className='w-full h-full rounded-xl object-cover object-center' />
                     : <GiCookingPot className='text-white text-[7rem]' />
                 }
             </div>

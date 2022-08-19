@@ -17,6 +17,9 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { GiCookingPot } from 'react-icons/gi'
 import { MdStore, MdToggleOn } from 'react-icons/md'
 
+// Components
+import Image from '../../../components/Image'
+
 const InfoDropdown = ({ meal }) => {
     const [showDetails, setShowDetails] = useState(false)
     const { nutrition } = meal
@@ -116,7 +119,7 @@ function ActiveMeals({ meals }) {
                             <div className={`${lastChild ? '' : 'border-b-2'} even:bg-gray-100  grid grid-cols-5 gap-5 p-4 `} key={element._id}>
                                 <Link to={`/admin/meals/${replaceSpaces(element.name)}/${element._id}`}>
                                     {element.img
-                                        ? <img src={`${IMAGE_API}/${element.img}`} alt={element.name} className='w-[50px] h-[50px] object-center object-cover rounded-lg overflow-hidden' />
+                                        ? <Image src={element.img} alt={element.name} width={50} height={50} sx='object-center object-cover rounded-lg overflow-hidden' />
                                         : <span className='bg-neutral-400 w-[50px] h-[50px] flex justify-center items-center rounded-lg' >
                                             <GiCookingPot className='text-white text-3xl' />
                                         </span>

@@ -25,6 +25,7 @@ import AllMeals from './pages/meals'
 import TodayMeals from './pages/meals/today'
 import SingleMeal from './pages/meals/[id]'
 import NotFound from './pages/404'
+import Test from './pages/test'
 
 
 // Admin Pages
@@ -83,6 +84,9 @@ function App() {
 
           {/* Landing  */}
           <Route exact path='/' element={<Home />} />
+
+          {/* Test  */}
+          <Route exact path='/test' element={<Test />} />
 
           {/* About  */}
           <Route exact path='/about' element={<About />} />
