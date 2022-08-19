@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { useStoreOpen } from '../../lib/context/StoreOpenProvider';
 
 // API
-import { get_AllDates, post_AddOrder, IMAGE_API } from '../../lib/api/index'
+import { get_AllDates, post_AddOrder } from '../../lib/api/index'
 
 // Router
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,6 +14,7 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 import Loading from '../../components/Admin/Loading'
+import Image from '../../components/Image'
 
 // Utils
 import { validateEmail } from '../../lib/utils';
@@ -244,7 +245,7 @@ const ListOfBagItems = ({ ulRef, bag }) => {
                     <div className='flex flex-1 space-x-10'>
                         <div className='w-[120px] h-[120px] flex rounded-2xl justify-center items-center bg-neutral-300 overflow-hidden'>
                             {img
-                                ? <img src={`${IMAGE_API}/${img}`} alt={name} className='w-full h-full object-center object-cover rounded-lg ' />
+                                ? <Image src={img} alt={name} sx=' object-center object-cover rounded-lg ' />
                                 : <GiCookingPot className='text-[4rem] text-white' />
                             }
                         </div>
@@ -276,7 +277,7 @@ const ListOfBagItems = ({ ulRef, bag }) => {
                         {/* Image */}
                         <div className='w-[120px] h-[120px] flex rounded-2xl justify-center items-center bg-neutral-300 overflow-hidden'>
                             {img
-                                ? <img src={`${IMAGE_API}/${img}`} alt={name} className='w-full h-full object-center object-cover rounded-lg ' />
+                                ? <Image src={img} alt={name} sx=' object-center object-cover rounded-lg ' />
                                 : <GiCookingPot className='text-[4rem] text-white' />
                             }
                         </div>

@@ -8,7 +8,8 @@ import { useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 
 // API
-import { delete_RemoveMeal, get_SingleMeal, put_UpdateMeal, IMAGE_API } from '../../../lib/api/index'
+import { delete_RemoveMeal, get_SingleMeal, put_UpdateMeal } from '../../../lib/api/index'
+import { replaceImage, uploadImage } from '../../../lib/firebase'
 
 // Utils
 import { replaceSpaces } from '../../../lib/utils'
@@ -434,18 +435,28 @@ const Macros = ({ calories, protein, carbs, fats, handleUpdate }) => {
 }
 const Img = ({ img, name, handleUpdate }) => {
     const [edit, setEdit] = useState(false)
-    const [input, setInput] = useState(img ? img : '')
+    const [imageUpload, setImageUpload] = useState(img ? img : '')
     const [display, setDisplay] = useState({ quick: null, official: img })
-
 
     function handleFormSubmit(e, ok) {
         e.preventDefault()
+
         if (ok) {
-            handleUpdate({ img: input, name: replaceSpaces(name) })
-            window.location.reload(false)
+            const fileExt = imageUpload.name.split('.')[1]
+            const filename = new Date().toISOString().replace(/:/g, '-') + '_' + replaceSpaces(name) + '.' + fileExt
+            if (display.official) {
+                // Replace Image in Firebase
+                replaceImage(display.official, imageUpload, filename)
+            } else {
+                // Add Image to Firebase
+                uploadImage(imageUpload, filename)
+            }
+
+            // Update MongoDB Filename
+            handleUpdate({ img: filename })
         } else {
             setDisplay({ ...display, quick: null })
-            setInput(img ? img : '')
+            setImageUpload(img ? img : '')
             setEdit(false)
         }
     }
@@ -454,7 +465,7 @@ const Img = ({ img, name, handleUpdate }) => {
         if (e.target.files && e.target.files[0]) {
             let img = URL.createObjectURL(e.target.files[0]);
             setDisplay({ ...display, quick: img })
-            setInput(e.target.files[0])
+            setImageUpload(e.target.files[0])
 
         }
     }
@@ -464,17 +475,15 @@ const Img = ({ img, name, handleUpdate }) => {
             {!edit &&
                 <>
                     {display.official
-                        ? <img src={`${IMAGE_API}/${display.official}`} alt={display.official} className='w-full h-full object-center object-cover rounded-xl overflow-hidden' />
+                        ? <Image src={display.official} alt={display.official} sx='object-center object-cover rounded-xl overflow-hidden' />
                         : <span className='bg-neutral-400 lg:w-[500px] lg:h-[500px] w-full h-full min-w-[300px] min-h-[300px] flex justify-center items-center rounded-lg' >
                             <GiCookingPot className='text-white text-[10rem]' />
                         </span>
                     }
 
-
                     <MdEdit
                         onClick={() => setEdit(true)}
                         className='cursor-pointer inline-block ml-2 absolute top-5 right-5 text-4xl text-neutral-500 bg-white rounded-lg p-1' />
-
                 </>
             }
 
@@ -485,8 +494,7 @@ const Img = ({ img, name, handleUpdate }) => {
                         <MdClose onClick={(e) => handleFormSubmit(e, false)} className='cursor-pointer inline-block ' />
                     </div>
 
-                    {(display.official && !display.quick) && <img src={`${IMAGE_API}/${display.official}`} alt={display.official} className='w-full h-full object-cover object-center rounded-xl overflow-hidden' />}
-                    {(display.quick) && <img src={`${display.quick}`} alt={display.quick} className='w-full h-full object-cover object-center rounded-xl overflow-hidden' />}
+                    {(display.quick) && <img src={display.quick} alt={display.quick} className='w-full h-full object-cover object-center rounded-xl overflow-hidden' />}
 
                     <div style={fileInputStyles} className='absolute -translate-y-[50%] top-[50%]'>
                         <label className="custom-file-upload text-neutral-700">
@@ -494,7 +502,6 @@ const Img = ({ img, name, handleUpdate }) => {
                                 type="file"
                                 name='image'
                                 onChange={handleFileOnChange}
-                                accept="image/jpeg"
                             />
                             <MdOutlineFileUpload className='inline-block mb-0.5 text-xl' /> Upload
                         </label>
@@ -580,8 +587,8 @@ function SingleMeal() {
     }
 
     return (
-        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
-            <div className='bg-white rounded-xl p-5 drop-shadow-xl relative'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20 flex items-center justify-center'>
+            <div className='bg-white rounded-xl p-5 drop-shadow-xl relative max-w-[1200px]'>
 
                 <Name
                     handleUpdate={handleUpdate}
@@ -599,7 +606,6 @@ function SingleMeal() {
 
 
                 <div className='flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-5'>
-
                     <Img
                         name={meal.name}
                         img={meal.img}

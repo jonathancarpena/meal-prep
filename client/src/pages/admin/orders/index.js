@@ -130,8 +130,8 @@ function AdminOrders() {
         return <Loading />
     }
     return (
-        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
-            <div className='bg-white rounded-xl p-5 drop-shadow-xl'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20 flex justify-center items-center'>
+            <div className='bg-white rounded-xl p-5 drop-shadow-xl max-w-[1200px]'>
 
                 {/* Header */}
                 <h1 className='text-neutral-700 text-3xl mb-5'>

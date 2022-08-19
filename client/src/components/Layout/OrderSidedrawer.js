@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-// API
-import { IMAGE_API } from '../../lib/api'
 
 // Router
 import { useNavigate } from 'react-router-dom'
@@ -22,6 +20,7 @@ import { FaMinus, FaPlus } from 'react-icons/fa'
 
 // Components
 import { Transition } from '@tailwindui/react'
+import Image from '../../components/Image'
 
 const Fade = ({ show, children }) => {
     return (
@@ -90,7 +89,7 @@ const BagItem = ({ item, index }) => {
             <div className='flex space-x-4'>
                 <div onClick={() => handleNavigate()} className='cursor-pointer w-[100px] h-[100px] flex rounded-2xl justify-center items-center overflow-hidden bg-neutral-300'>
                     {item.img
-                        ? <img src={`${IMAGE_API}/${item.img}`} alt={item.name} className='w-full h-full object-center object-cover rounded-lg ' />
+                        ? <Image src={item.img} alt={item.name} sx=' object-center object-cover rounded-lg ' />
                         : <GiCookingPot className='text-[4rem] text-white' />
                     }
                 </div>

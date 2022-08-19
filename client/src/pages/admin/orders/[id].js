@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 
 // API
-import { get_SingleOrder, put_UpdateOrder, delete_RemoveOrder, get_AllMeals, IMAGE_API } from '../../../lib/api/index'
+import { get_SingleOrder, put_UpdateOrder, delete_RemoveOrder, get_AllMeals } from '../../../lib/api/index'
 
 // Router
 import { useParams, useNavigate, Link } from 'react-router-dom'
@@ -17,6 +17,9 @@ import { GiCookingPot } from 'react-icons/gi'
 
 // Components
 import Loading from '../../../components/Admin/Loading'
+import Image from '../../../components/Image'
+
+// Redux
 import { useSelector } from 'react-redux'
 
 
@@ -70,7 +73,7 @@ const Items = ({ items, order }) => {
                         <Link to={`/admin/meals/${replaceSpaces(item.name)}/${item._id}`}>
                             <div className='w-[70px] h-[70px] flex  justify-center items-center bg-neutral-300 object-center object-cover rounded-lg overflow-hidden'>
                                 {item.img
-                                    ? <img src={`${IMAGE_API}/${item.img}`} alt={item.name} />
+                                    ? <Image src={item.img} alt={item.name} />
                                     : <GiCookingPot className='text-[3rem] text-white' />
                                 }
                             </div>

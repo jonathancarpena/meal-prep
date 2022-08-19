@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // API
-import { put_UpdateMeal, IMAGE_API } from '../../../lib/api'
+import { put_UpdateMeal } from '../../../lib/api'
 
 // Utils
 import { replaceSpaces } from '../../../lib/utils'
@@ -165,7 +165,7 @@ function ActiveMeals({ meals }) {
                             <div className={`${lastChild ? '' : 'border-b-2'} even:bg-gray-100 w-max grid grid-cols-[70px_200px_100px_70px] gap-5 p-4 `} key={element._id}>
                                 <Link to={`/admin/meals/${replaceSpaces(element.name)}/${element._id}`}>
                                     {element.img
-                                        ? <img src={`${IMAGE_API}/${element.img}`} alt={element.name} className='w-[50px] h-[50px] object-center object-cover rounded-lg overflow-hidden' />
+                                        ? <Image src={element.img} alt={element.name} width={50} height={50} sx='object-center object-cover rounded-lg overflow-hidden' />
                                         : <span className='bg-neutral-400 w-[50px] h-[50px] flex justify-center items-center rounded-lg' >
                                             <GiCookingPot className='text-white text-3xl' />
                                         </span>

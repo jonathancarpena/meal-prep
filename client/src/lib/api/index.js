@@ -8,7 +8,6 @@ import sampleBlockedDates from '../db/sampleBlockedDates'
 const BASE_API = 'http://localhost:5000/api'
 // const BASE_API = 'https://nathan-meal-prep.herokuapp.com/api'
 
-export const IMAGE_API = 'https://nathan-meal-prep.herokuapp.com/image'
 export const today = sampleMeals.filter((item) => item.active === true)
 
 export function mealById(_id) {
@@ -245,17 +244,3 @@ export async function put_UpdateProfile(token, body) {
 
 }
 
-
-// IMAGES //
-export function get_Img(img) {
-    const url = `${IMAGE_API}/image/${img}`
-    axios.get(url, {
-        responseType: 'blob',
-        headers: {
-            "Content-Type": "image/jpeg"
-        }
-    })
-        .then((res) => {
-            return res.data
-        })
-}
