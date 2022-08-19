@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // API
-import { get_AllMeals, put_UpdateMeal, IMAGE_API } from '../../../lib/api'
+import { get_AllMeals, put_UpdateMeal } from '../../../lib/api'
 
 // Utils
 import { replaceSpaces } from '../../../lib/utils'
