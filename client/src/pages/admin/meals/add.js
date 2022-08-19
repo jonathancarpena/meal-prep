@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+// Utils
+import { replaceSpaces } from '../../../lib/utils'
+
 // Router
 import { useNavigate } from 'react-router-dom'
 
@@ -7,7 +10,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // API
-import { post_AddMeal, put_UpdateMeal } from '../../../lib/api/index'
+import { post_AddMeal } from '../../../lib/api/index'
+import { uploadImage } from '../../../lib/firebase'
 
 // Icons
 import { MdSave, MdOutlineFileUpload, MdClose } from 'react-icons/md'
@@ -252,7 +256,7 @@ const Macros = ({ nutrition, setNutrition }) => {
         </>
     )
 }
-const Img = ({ img, setImg }) => {
+const Img = ({ setImg }) => {
     const [display, setDisplay] = useState(null)
 
     async function handleFileOnChange(e) {
@@ -282,7 +286,6 @@ const Img = ({ img, setImg }) => {
                         type="file"
                         name='image'
                         onChange={handleFileOnChange}
-                        accept="image/png, image/jpeg"
                     />
                     <MdOutlineFileUpload className='inline-block mb-0.5 text-xl' /> Upload
                 </label>
@@ -365,21 +368,28 @@ function AddMeal() {
                 }
             })
 
+            const fileExt = img.name.split('.')[1]
+            const filename = new Date().toISOString().replace(/:/g, '-') + '_' + replaceSpaces(name) + '.' + fileExt
+
+
+            // Upload Image to Firebase
+            uploadImage(img, filename)
+
             const body = {
                 name,
                 price,
                 type,
                 description,
                 nutrition: { ...nutrition },
-                ingredients: [...ingredients]
+                ingredients: [...ingredients],
+                img: filename
             }
 
+            // Add to MongoDB
             const res = await post_AddMeal(token, body)
+
             if (res) {
-                const imageUpload = await put_UpdateMeal(token, res._id, { img: img, name: name })
-                if (imageUpload) {
-                    navigate('/admin/meals')
-                }
+                navigate('/admin')
             }
 
         }
