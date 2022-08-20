@@ -1,3 +1,5 @@
+import emailjs from '@emailjs/browser'
+
 export function validateEmail(email) {
     const domainExt = ["com", "edu", "net", "org"]
     let error = false
@@ -40,3 +42,14 @@ export function toTitleCase(str) {
         }
     );
 }
+
+
+export function sendEmail(params) {
+    // console.log('sending params')
+    emailjs.send('NathanMealPrep', 'contact_template', params, process.env.EMAILJS_KEY)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+};

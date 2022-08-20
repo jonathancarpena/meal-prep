@@ -398,8 +398,8 @@ function AddMeal() {
     }
 
     return (
-        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
-            <div className='bg-white rounded-xl p-5 drop-shadow-xl relative'>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20 flex justify-center items-center '>
+            <div className='bg-white rounded-xl p-5 drop-shadow-xl relative w-full max-w-[1200px]'>
 
                 <Name
                     setName={setName}

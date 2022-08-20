@@ -191,8 +191,8 @@ function SingleOrder() {
     }
 
     return (
-        <div className='pt-[10rem] px-10 lg:px-20 pb-20'>
-            <div className='bg-white rounded-xl  drop-shadow-xl '>
+        <div className='pt-[10rem] px-10 lg:px-20 pb-20 flex justify-center items-center '>
+            <div className='bg-white rounded-xl  drop-shadow-xl w-full max-w-[1200px] '>
 
                 <div className='relative p-5 border-b-4'>
 

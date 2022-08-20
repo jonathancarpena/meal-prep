@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
-import { validateEmail } from '../lib/utils'
+import {
+    validateEmail,
+    // sendEmail
+} from '../lib/utils'
 
 // Icons
 import { CgSpinnerTwoAlt } from 'react-icons/cg'
+
+
 const FormInput = ({ error, value, setValue, label, type = "text" }) => {
     function generateErrorMessage() {
         if (label.toLowerCase() === "first name" || label.toLowerCase() === "last name") {
@@ -126,6 +131,15 @@ function Contact() {
         e.preventDefault()
         if (formValidate()) {
             // Send Email
+            // const params = {
+            //     first_name: fName,
+            //     last_name: lName,
+            //     email: email,
+            //     order_num: orderNum,
+            //     message: message,
+            // }
+            // sendEmail(params)
+
             setLoading(true)
             setTimeout(() => {
                 handleFormReset()
