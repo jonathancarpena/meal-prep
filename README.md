@@ -11,7 +11,7 @@
 <img src="./screenshots/meals.PNG" width="690" height="375" alt="meals">
 <img src="./screenshots/single-meal.PNG" width="690" height="375" alt="single-meal">    
 <img src="./screenshots/admin-orders.PNG" width="690" height="375" alt="admin-orders">  
-<img src="./screenshots/single-meals.PNG" width="690" height="375" alt="admin-meals">  
+<img src="./screenshots/admin-meals.PNG" width="690" height="375" alt="admin-meals">  
 </ul>
 
 ### Mobile Design
@@ -132,4 +132,4 @@ npm run client
 
 ### Reflection
 - Working on this project not only allowed me to exercise my backend skills, but I was also able to work with time constraints. Knowing that there was a deadline, helped with figuring out a task list. 
-- If I were to make this project better, I would experiment with using MongoDB and GridFS to potentially replace Firebase, incorporate animation throughout the application, and more personality to the design itself. 
+- If I were to make this project better, I would implement a dark mode theme, experiment with using MongoDB and GridFS to potentially replace Firebase, incorporate animation throughout the application, and more personality to the design itself. 
