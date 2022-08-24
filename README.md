@@ -80,7 +80,7 @@ $ git clone https://github.com/jonathancarpena/nathans-meal-prep.git
 
 
 
-    ## Environment Variables
+## Environment Variables
 
 To run this project, you will need to add the following environment variables to your `.env` file inside the server folder.
 
