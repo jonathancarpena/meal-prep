@@ -5,7 +5,21 @@
 > <a href="https://nathansmealprep.netlify.app/" target="_blank" rel="noopener noreferrer">Visit Here 🔗</a>
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/830x425?text=App+Screenshot+Here)
+
+<ul style="display:flex flex-direction:column">
+<img src="./screenshots/landing.PNG" width="690" height="375" alt="landing"> 
+<img src="./screenshots/meals.PNG" width="690" height="375" alt="meals">
+<img src="./screenshots/single-meal.PNG" width="690" height="375" alt="single-meal">    
+<img src="./screenshots/admin-orders.PNG" width="690" height="375" alt="admin-orders">  
+<img src="./screenshots/single-meals.PNG" width="690" height="375" alt="admin-meals">  
+</ul>
+
+### Mobile Design
+<ul style="display:flex">
+<img src="./screenshots/mobile-landing.PNG" width="173" height="361" alt="mobile-landing">  
+<img src="./screenshots/mobile-meals.PNG" width="173" height="361" alt="mobile-meals">  
+<img src="./screenshots/mobile-single-meal.PNG" width="173" height="361" alt="mobile-single-meal">   
+</ul>
 
 
 
