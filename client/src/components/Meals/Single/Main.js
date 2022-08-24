@@ -49,7 +49,7 @@ function Main({ data }) {
             </div>
 
 
-            <div className='flex flex-col flex-none lg:w-[40%]'>
+            <div className='place-self-start relative right-5 lg:right-0 flex flex-col flex-none lg:w-[40%]'>
 
                 {/* Name */}
                 <div className={`${active ? 'mt-5' : 'my-5'}`}>
@@ -75,7 +75,7 @@ function Main({ data }) {
                             </button>
                         </div>
                         <button disabled={!open} onClick={handleAddToBag} className={`${open ? '' : 'opacity-60'} w-[80%] text-2xl text-white py-3 px-5 bg-yellow-400`}>
-                            {!open ? 'Booked For Today' : 'Add to Bag'}
+                            {!open ? 'Not Open Today' : 'Add to Bag'}
                         </button>
                     </div>
                     : <div className='w-full flex flex-col space-y-4 mb-10 mt-[-15px]'>

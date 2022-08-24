@@ -9,7 +9,7 @@ const {
     put_updateMeal,
 } = require("../controller/mealsController.js")
 const auth = require("../middleware/auth.js")
-const { resizeImg, upload } = require('../middleware/upload.js')
+
 
 const router = express.Router();
 
@@ -54,8 +54,6 @@ router.delete("/:_id", auth, delete_RemoveMeal)
 router.put(
     "/:_id",
     auth,
-    upload.single('image'),
-    resizeImg,
     put_updateMeal
 )
 

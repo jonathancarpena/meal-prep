@@ -3,7 +3,7 @@ const Admin = require('../models/Admin.js')
 
 // Auth
 const jwt = require('jsonwebtoken')
-const bcrypt = 'bcrypt'
+const bcrypt = require('bcrypt')
 const { generateHashPassword } = require('../lib/utils.js')
 const moment = require('moment')
 

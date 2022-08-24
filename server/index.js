@@ -13,7 +13,6 @@ const adminRoutes = require('./routes/adminRoutes.js')
 const availabilityRoutes = require('./routes/availabilityRoutes.js')
 const mealRoutes = require('./routes/mealsRoute.js')
 const orderRoutes = require('./routes/ordersRoute.js')
-const imageRoutes = require('./routes/imageRoute.js')
 
 // Conncet to MongoDB
 connectDB();
@@ -41,7 +40,6 @@ app.use("/api/admin", adminRoutes)
 app.use("/api/availability", availabilityRoutes)
 app.use("/api/meals", mealRoutes)
 app.use("/api/orders", orderRoutes)
-app.use('/image', imageRoutes)
 
 
 // Uncomment For Development

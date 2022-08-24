@@ -121,20 +121,6 @@ const put_updateMeal = async (req, res) => {
     const { _id } = req.params
     let body = { ...req.body }
 
-    if (req.file !== undefined && req.file.filename) {
-        const oldMeal = await Meals.findById(_id)
-        if (oldMeal.img) {
-            fs.access(`${imageFolder}/${oldMeal.img}`, (err) => {
-                if (err) {
-                    return
-                } else {
-                    fs.unlinkSync(`${imageFolder}/${oldMeal.img}`)
-                }
-            })
-        }
-
-        body = { img: req.file.filename }
-    }
     try {
         const updatedMeal = await Meals.findByIdAndUpdate(_id, { ...body })
         return res.status(200).json(updatedMeal)
