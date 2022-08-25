@@ -3,7 +3,7 @@
 
 > A web app created for client that displays information about their company and products. Application also features a content managing system and ordering system.
 > <a href="https://nathansmealprep.netlify.app/" target="_blank" rel="noopener noreferrer">Visit Here 🔗</a>
-## Screenshots
+## 📷 Screenshots
 
 
 <ul style="display:flex flex-direction:column">
@@ -65,7 +65,7 @@ Insert gif or link to demo
 
 
 
-## Setup
+## 🛠 Setup
 
 Clone down this repository. You will need node and npm installed globally on your machine.
 ```
@@ -87,7 +87,7 @@ To run this project, you will need to add the following environment variables to
 `MONGO_URI`: Register a new cluster in MongoDB Atlas and record your Mongo URI
 
 `TOKEN_KEY`: a randomly generated string of numbers and letters. (Ex. "8c6b1abd9d8c44eb")
-## Scripts
+## 🚀 Scripts
 
 
 Development mode. Open http://localhost:3000 to view it in the browser. Server will run on PORT:5000
