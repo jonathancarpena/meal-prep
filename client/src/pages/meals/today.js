@@ -41,7 +41,7 @@ function Today() {
         return <Loading />
     }
     return (
-        <div className='mt-[90px] bg-neutral-100  p-20 sm:p-20 relative'>
+        <div className=' bg-neutral-100  py-20 lg:p-20 relative'>
             {/* Breadcrumbs */}
             <div className='hidden absolute sm:flex space-x-1 items-center'>
                 <Link to='/meals'>

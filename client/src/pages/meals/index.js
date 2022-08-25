@@ -8,6 +8,7 @@ import { get_AllMeals } from '../../lib/api'
 
 // Components
 import MealGrid from '../../components/Meals/MealGrid'
+import Loading from '../../components/Admin/Loading'
 
 // Icons
 import {
@@ -38,10 +39,10 @@ function Today() {
     }, [content])
 
     if (loading) {
-        return <h1>Loading...</h1>
+        return <Loading />
     }
     return (
-        <div className='mt-[90px] bg-neutral-100 p-20 relative'>
+        <div className=' bg-neutral-100  py-20 lg:p-20 relative'>
 
 
 
@@ -56,7 +57,7 @@ function Today() {
 
 
             {/* Icons */}
-            <div className='text-neutral-700 flex space-x-10 justify-center mb-8 p-3 bg-neutral-100 w-max rounded-xl mx-auto'>
+            <div className='text-neutral-700 flex space-x-10 justify-center mb-8 p-3 bg-neutral-100 rounded-xl mx-auto'>
                 <p className='flex items-center'>
                     <MdBreakfastDining className=' inline-block text-2xl' />
                     <span className='ml-2 '>Breakfast</span>

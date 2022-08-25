@@ -37,7 +37,7 @@ function MealGrid({ data }) {
         }
     }
     return (
-        <div className={`grid grid-cols-1 sm:grid-cols-3 justify-items-center place-items-center gap-7  max-w-[1000px] mx-auto `}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 md:max-w-[650px] lg:grid-cols-3 justify-items-center place-items-center gap-7  lg:max-w-[1000px] mx-auto `}>
             {data.map((item, idx) => (
                 // Product
                 <div
