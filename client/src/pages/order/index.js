@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, forwardRef } from 'react'
 
 // Context
 import { useStoreOpen } from '../../lib/context/StoreOpenProvider';
@@ -37,7 +37,7 @@ const EmptyBag = () => {
         </div>
     )
 }
-const FormInput = ({ error, value, setValue, label, type = "text" }) => {
+const FormInput = ({ id, error, value, setValue, label, type = "text" }) => {
     function generateErrorMessage() {
         if (label.toLowerCase() === "first name" || label.toLowerCase() === "last name") {
             return "Min. 3 Characters."
@@ -61,6 +61,7 @@ const FormInput = ({ error, value, setValue, label, type = "text" }) => {
             </label>
             {type === "text" &&
                 <input
+                    id={id}
                     type="text"
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
@@ -70,6 +71,7 @@ const FormInput = ({ error, value, setValue, label, type = "text" }) => {
 
             {type === "email" &&
                 <input
+                    id={id}
                     type={"email"}
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
@@ -82,20 +84,26 @@ const FormInput = ({ error, value, setValue, label, type = "text" }) => {
         </div>
     )
 }
-const ContactInfo = ({ fName, setFName, lName, setLName, email, setEmail, errors }) => {
+
+const ContactInfo = forwardRef(({ errors }, formRef) => {
+    const [fName, setFName] = useState('')
+    const [lName, setLName] = useState('')
+    const [email, setEmail] = useState('')
 
     return (
         <div className='flex flex-col space-y-2'>
             <span className='text-xl text-neutral-700 underline underline-offset-2 mb-3'>Contact Info:</span>
-            <form className='mx-5 lg:w-[50%] flex flex-col space-y-2'>
+            <form ref={formRef} className='mx-5 lg:w-[50%] flex flex-col space-y-2'>
                 <div className='flex flex-col space-y-2 lg:space-y-0 lg:flex-row lg:space-x-2 '>
                     <FormInput
+                        id={'fName'}
                         error={errors.fName}
                         value={fName}
                         setValue={setFName}
                         label={"First Name"}
                     />
                     <FormInput
+                        id={'lName'}
                         error={errors.lName}
                         value={lName}
                         setValue={setLName}
@@ -104,6 +112,7 @@ const ContactInfo = ({ fName, setFName, lName, setLName, email, setEmail, errors
                 </div>
 
                 <FormInput
+                    id={'email'}
                     type='email'
                     error={errors.email}
                     value={email}
@@ -117,10 +126,12 @@ const ContactInfo = ({ fName, setFName, lName, setLName, email, setEmail, errors
         </div>
 
     )
-}
+});
+
+
 const ReserveDate = ({ availableDates, reserveDate, setReserveDate }) => {
     const today = moment(Date.now())
-    const CustomDateButton = React.forwardRef(({ value, onClick }, ref) => (
+    const CustomDateButton = forwardRef(({ value, onClick }, ref) => (
         <button className="w-max text-neutral-700" onClick={onClick} ref={ref}>
             <BsCalendar2Event className='text-2xl lg:text-3xl inline-block' />
         </button>
@@ -360,15 +371,11 @@ function Order() {
     const [loading, setLoading] = useState(true)
     const open = useStoreOpen()
 
-
-    // Contact Form 
-    const [fName, setFName] = useState('')
-    const [lName, setLName] = useState('')
-    const [email, setEmail] = useState('')
     const [errors, setErrors] = useState({ fName: null, lName: null, email: null })
     const [reserveDate, setReserveDate] = useState(null)
     const [availableDates, setAvailableDates] = useState(null)
-    const ulRef = React.useRef(null)
+    const ulRef = useRef(null)
+    const formRef = useRef(null)
 
 
     useEffect(() => {
@@ -387,10 +394,6 @@ function Order() {
         }
     }, [availableDates, reserveDate])
 
-
-
-
-
     function inputValidation(input, email) {
         let error = false
         if (input.length < 3) {
@@ -404,6 +407,10 @@ function Order() {
     }
 
     function formValidate() {
+        const fName = document.getElementById('fName').value
+        const lName = document.getElementById('lName').value
+        const email = document.getElementById('email').value
+
         const copy = { ...errors }
         if (inputValidation(fName, false)) {
             copy['fName'] = true
@@ -428,21 +435,10 @@ function Order() {
 
         const results = Object.values(copy).every((item) => item === false)
         return results
+
     }
 
-
-    // book_date: {
-    //     type: Date,
-    //     required: true,
-    // },
-    // customer: {
-    //     type: CustomerSchema,
-    //     required: true
-    // },
-
     async function handleSubmitOrder() {
-
-
         if (formValidate()) {
             const items = bag.map((item) => {
                 return {
@@ -450,13 +446,15 @@ function Order() {
                     qty: item.qty
                 }
             })
+            const fName = document.getElementById('fName').value
+            const lName = document.getElementById('lName').value
+            const email = document.getElementById('email').value
 
             const body = {
                 items,
                 customer: { first_name: fName, last_name: lName, email },
                 book_date: moment(reserveDate).toDate()
             }
-
             const res = await post_AddOrder(body)
             if (res) {
                 setLoading(true)
@@ -509,12 +507,7 @@ function Order() {
                     <div className='flex flex-col space-y-10'>
                         <div className='flex flex-col  space-y-10 lg:space-x-10 lg:flex-row lg:space-y-0'>
                             <ContactInfo
-                                fName={fName}
-                                setFName={setFName}
-                                lName={lName}
-                                setLName={setLName}
-                                email={email}
-                                setEmail={setEmail}
+                                ref={formRef}
                                 errors={errors}
                             />
                             <ReserveDate
