@@ -11,7 +11,6 @@ import MealGrid from '../../components/Meals/MealGrid';
 import Loading from '../../components/Admin/Loading';
 
 // Icons
-import { FiChevronRight } from 'react-icons/fi';
 import {
   MdBreakfastDining,
   MdLunchDining,
