@@ -1,23 +1,11 @@
-import React from 'react'
-
-// Icons
-import { FaLeaf } from 'react-icons/fa'
-
-
-
-function Brand({ isDarkBg = false, onClick = null, sx }) {
-
-    return (
-        <div onClick={() => onClick()} className={`w-[170px] h-[85px] flex justify-center items-center cursor-pointer ${sx}`}>
-            <div className={`flex justify-center items-center relative w-[100px] border-8 border-primary-400 mx-auto`}>
-                <h1 className={`${isDarkBg ? 'text-white' : 'text-neutral-700'} font-bold text-4xl tracking-tighter  z-[20] `}>
-                    MealFresh
-                </h1>
-                <FaLeaf className={`absolute -right-8 bottom-0 text-[4rem] text-yellow-500`} />
-            </div>
-        </div>
-
-    )
+function Brand({ onClick = null }) {
+  return (
+    <div
+      onClick={() => onClick()}
+      className={` h-[85px]  w-max px-5 flex justify-center items-center rounded-lg  overflow-hidden bg-yellow-400 cursor-pointer `}>
+      <img src='/logo.jpeg' className='w-auto h-[90%]' />
+    </div>
+  );
 }
 
-export default Brand
+export default Brand;

@@ -114,7 +114,7 @@ function Navbar() {
             : 'text-neutral-700'
         }    top-0 fixed ${
           sideDrawer ? 'z-0' : 'z-[100]'
-        } py-1 font-body px-5 lg:flex justify-between items-center w-full max-w-[1980px] transition-all duration-300 h-[90px]  `}>
+        } py-1 font-body pr-5 lg:flex justify-between items-center w-full max-w-[1980px] transition-all duration-300 h-[90px]  `}>
         {/* Branding */}
         <Brand isDarkBg={scroll > 25} onClick={() => navigate('/')} />
 
