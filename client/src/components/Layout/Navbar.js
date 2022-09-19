@@ -32,69 +32,19 @@ const navLinks = [
 ];
 
 const MobileMenu = () => {
-<<<<<<< HEAD
-    const { mobileMenu } = useSelector(state => state.modal)
-    const dispatch = useDispatch()
-    const { pathname } = useLocation()
-    const navigate = useNavigate()
-    function handleNavigate(link) {
-        navigate(link)
-        dispatch(closeMobileMenu())
-    }
-
-
-    return (
-        <div className={` ${mobileMenu ? 'translate-x-0 ' : 'translate-x-[100vw] bg-transparent '} fixed  inset-0 transition-all ease-in-out duration-300   z-[200] h-screen w-screen bg-yellow-400 flex flex-col text-white `}>
-
-            <div className='active:scale-90 transition-all ease-in-out duration-200 fixed top-6 right-10 px-2 py-1 rounded-xl bg-white text-yellow-400'>
-                <MdOutlineClose
-                    onClick={() => dispatch(closeMobileMenu())}
-                    className='cursor-pointer text-[1.75rem]  '
-                />
-            </div>
-
-            <div className='flex flex-col  items-center justify-center mt-[5rem]'>
-                {navLinks.map((item, idx) => (
-                    <div
-                        key={`mobile-menu-${item.text}`}
-                        onClick={() => handleNavigate(item.link)}
-                        className={`cursor-pointer w-full text-center py-10 active:bg-yellow-500`}>
-                        <span className={`${pathname === item.link ? 'underline underline-offset-8' : ''} capitalize font-semibold text-5xl `}>
-                            {item.text}
-                        </span>
-                    </div>
-                ))}
-            </div>
-            <ul className='flex justify-center space-x-10 py-10'>
-                {Socials.map((item, idx) => (
-                    <a key={`social-${idx}`} target="_blank" href={item.link} rel="noopener noreferrer">
-                        {item.icon}
-                    </a>
-                ))}
-            </ul>
-
-
-
-        </div>
-    )
-}
-=======
-  const { mobileMenu } = useSelector((state) => state.modal);
-  const dispatch = useDispatch();
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
+  const { mobileMenu } = useSelector(state => state.modal)
+  const dispatch = useDispatch()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
   function handleNavigate(link) {
-    navigate(link);
-    dispatch(closeMobileMenu());
+    navigate(link)
+    dispatch(closeMobileMenu())
   }
 
+
   return (
-    <div
-      className={` ${
-        mobileMenu
-          ? 'translate-x-0 bg-yellow-400 text-white'
-          : 'translate-x-[100vw] bg-tranparent  text-transparent'
-      } fixed  inset-0 transition-all ease-in-out duration-300   z-[200] h-screen w-screen  flex flex-col  `}>
+    <div className={` ${mobileMenu ? 'translate-x-0 ' : 'translate-x-[100vw] bg-transparent '} fixed  inset-0 transition-all ease-in-out duration-300   z-[200] h-screen w-screen bg-yellow-400 flex flex-col text-white `}>
+
       <div className='active:scale-90 transition-all ease-in-out duration-200 fixed top-6 right-10 px-2 py-1 rounded-xl bg-white text-yellow-400'>
         <MdOutlineClose
           onClick={() => dispatch(closeMobileMenu())}
@@ -108,10 +58,7 @@ const MobileMenu = () => {
             key={`mobile-menu-${item.text}`}
             onClick={() => handleNavigate(item.link)}
             className={`cursor-pointer w-full text-center py-10 active:bg-yellow-500`}>
-            <span
-              className={`${
-                pathname === item.link ? 'underline underline-offset-8' : ''
-              } capitalize font-semibold text-5xl `}>
+            <span className={`${pathname === item.link ? 'underline underline-offset-8' : ''} capitalize font-semibold text-5xl `}>
               {item.text}
             </span>
           </div>
@@ -119,19 +66,17 @@ const MobileMenu = () => {
       </div>
       <ul className='flex justify-center space-x-10 py-10'>
         {Socials.map((item, idx) => (
-          <a
-            key={`social-${idx}`}
-            target='_blank'
-            href={item.link}
-            rel='noopener noreferrer'>
+          <a key={`social-${idx}`} target="_blank" href={item.link} rel="noopener noreferrer">
             {item.icon}
           </a>
         ))}
       </ul>
+
+
+
     </div>
-  );
-};
->>>>>>> 3d7187f79b918196b1b806d2f99c5a2056f557e1
+  )
+}
 
 function Navbar() {
   const open = useStoreOpen();
@@ -156,13 +101,11 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`hidden ${
-          scroll > 25
+        className={`hidden ${scroll > 25
             ? 'text-white bg-yellow-400 drop-shadow-xl'
             : 'text-neutral-700'
-        }    top-0 fixed ${
-          sideDrawer ? 'z-0' : 'z-[100]'
-        } py-1 font-body pr-5 lg:flex justify-between items-center w-full max-w-[1980px] transition-all duration-300 h-[90px]  `}>
+          }    top-0 fixed ${sideDrawer ? 'z-0' : 'z-[100]'
+          } py-1 font-body pr-5 lg:flex justify-between items-center w-full max-w-[1980px] transition-all duration-300 h-[90px]  `}>
         {/* Branding */}
         <Brand isDarkBg={scroll > 25} onClick={() => navigate('/')} />
 
@@ -180,9 +123,8 @@ function Navbar() {
                 <Link to={item.link}>
                   <p>
                     <span
-                      className={`mr-3 ${
-                        pathname === item.link ? activeLinkStyles : ''
-                      } `}>
+                      className={`mr-3 ${pathname === item.link ? activeLinkStyles : ''
+                        } `}>
                       {item.text}
                     </span>
 
@@ -197,9 +139,8 @@ function Navbar() {
         {/* Bag */}
         {open && (
           <div
-            className={`${
-              open ? 'bg-yellow-400' : 'bg-tranparent'
-            } text-white  hidden lg:inline-block  justify-center w-[80px] absolute right-0  h-[95%] mr-0.5 rounded-xl cursor-pointer`}>
+            className={`${open ? 'bg-yellow-400' : 'bg-tranparent'
+              } text-white  hidden lg:inline-block  justify-center w-[80px] absolute right-0  h-[95%] mr-0.5 rounded-xl cursor-pointer`}>
             <button
               disabled={!open}
               onClick={() => navigate('/order')}
@@ -216,9 +157,8 @@ function Navbar() {
 
       {/* Mobile Nav */}
       <nav
-        className={`${
-          scroll > 25 ? 'bg-yellow-400 text-white' : ''
-        }  active:scale-90  drop-shadow-xl lg:hidden fixed top-6 right-6 transition-all ease-in-out duration-200 px-2 py-1 rounded-xl  z-[100]`}>
+        className={`${scroll > 25 ? 'bg-yellow-400 text-white' : ''
+          }  active:scale-90  drop-shadow-xl lg:hidden fixed top-6 right-6 transition-all ease-in-out duration-200 px-2 py-1 rounded-xl  z-[100]`}>
         <MdMenu
           onClick={() => dispatch(showMobileMenu())}
           className={` text-[1.75rem] cursor-pointer `}
