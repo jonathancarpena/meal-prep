@@ -12,7 +12,7 @@ function Main() {
         {/* Content */}
         <div className=' flex flex-col space-y-6 justify-center py-10  md:px-5 lg:p-20 lg:w-[65%]'>
           <h2 className='font-bold text-2xl lg:text-5xl mb-3 lg:mb-6'>
-            A Different Kind of Supplement Company.
+            All your Macro-Friendly Meals right here.
           </h2>
 
           <div className='flex flex-col space-y-2'>
@@ -21,8 +21,8 @@ function Main() {
             </h3>
 
             <p className='text-lg'>
-              That means providing products that are of the highest quality &
-              ensuring that every step of the way the customer experience is 5
+              That means providing meals that are of the highest quality &
+              ensuring that every spoonful bite the customer experiences is 5
               Stars!
             </p>
           </div>

@@ -33,7 +33,7 @@ function CoreValues() {
     <div className='bg-[#333333]'>
       <div className='bg-[#333333] relative lg:bottom-14 pt-[6rem] pb-14 rounded-t-[3rem] lg:px-20'>
         <h1 className='text-center text-white uppercase text-4xl sm:text-5xl  font-extrabold'>
-          Meal Fresh Core Values
+          Meal Prep Core Values
         </h1>
 
         <ul className='flex flex-col space-y-10 items-center justify-evenly w-full mt-16 sm:flex-row sm:space-y-0'>

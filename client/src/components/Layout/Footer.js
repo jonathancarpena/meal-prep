@@ -21,7 +21,7 @@ const supportLinks = [
 export const Socials = [
   {
     icon: <FaInstagram className='text-4xl text-white' />,
-    link: '',
+    link: 'https://www.instagram.com/itsncarpena/',
   },
 ];
 function Footer() {

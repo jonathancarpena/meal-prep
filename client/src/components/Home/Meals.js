@@ -97,10 +97,8 @@ function Meals() {
         </h2>
 
         {/* Sub Header */}
-        <p className='text-center text-base lg:text-xl mt-5 text-neutral-700 '>
-          {`Our dishes are tailored to meet individual dietary needs. 
-                    Order á la carte or opt for a meal plan. We offer Chef’s Choice, 
-                    pre-chosen meal plans or Your Choice, fully customizable meal plans.`}
+        <p className='text-center text-base lg:text-3xl mt-5 text-neutral-700 '>
+          {`Our dishes are tailored to balance the right amount of flavor and the optimal amount of macronutrients. Order as many meals as you need to supplement your next week.`}
         </p>
       </div>
 
