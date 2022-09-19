@@ -143,7 +143,7 @@ function OrderSidedrawer() {
         <>
 
             <div
-                className={`${sideDrawer ? 'translate-y-0 sm:translate-x-0' : 'translate-y-full sm:translate-x-full sm:translate-y-0'} transition-all ease-in-out duration-300 fixed inset-0 z-[150] `}
+                className={`${sideDrawer ? 'translate-y-0 sm:translate-x-0' : ' translate-y-full sm:translate-x-full sm:translate-y-0'} transition-all ease-in-out duration-300 fixed inset-0 z-[150] `}
             >
 
                 <div className="absolute w-screen  bottom-0 sm:right-0  sm:w-[400px]">

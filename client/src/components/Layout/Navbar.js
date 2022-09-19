@@ -41,7 +41,7 @@ const MobileMenu = () => {
 
 
     return (
-        <div className={` ${mobileMenu ? 'translate-x-0 ' : 'translate-x-[100vw] '} fixed  inset-0 transition-all ease-in-out duration-300   z-[200] h-screen w-screen bg-yellow-400 flex flex-col text-white `}>
+        <div className={` ${mobileMenu ? 'translate-x-0 ' : 'translate-x-[100vw] bg-transparent '} fixed  inset-0 transition-all ease-in-out duration-300   z-[200] h-screen w-screen bg-yellow-400 flex flex-col text-white `}>
 
             <div className='active:scale-90 transition-all ease-in-out duration-200 fixed top-6 right-10 px-2 py-1 rounded-xl bg-white text-yellow-400'>
                 <MdOutlineClose
