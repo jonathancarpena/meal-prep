@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // React Router
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 // API
 import { get_SingleMeal, get_SimilarMeals } from '../../lib/api';
@@ -11,8 +11,7 @@ import Main from '../../components/Meals/Single/Main';
 import Recommended from '../../components/Meals/Single/Recommended';
 import Loading from '../../components/Admin/Loading';
 
-// Icons
-import { FiChevronRight } from 'react-icons/fi';
+
 
 function SingleMeal() {
   const { _id } = useParams();
@@ -46,23 +45,8 @@ function SingleMeal() {
     return <Loading />;
   }
   return (
-    <div className='mt-[45px] md:mt-0 lg:mt-[10px] bg-neutral-100 px-10 sm:p-20 flex flex-col relative space-y-20 max-w-[1980px]'>
-      {/* Breadcrumbs */}
-      <div className='absolute top-[5rem] md:top-[7.5rem] lg:top-[7rem] lg:left-[17rem] flex space-x-1 items-center'>
-        <Link to='/meals'>Meals</Link>
-        <FiChevronRight className='inline-block text-2xl' />
-        {meal.active ? (
-          <>
-            <Link to='/meals/today'>Today</Link>
-            <FiChevronRight className='inline-block text-2xl' />
-            <span className='font-semibold'>{meal.name}</span>
-          </>
-        ) : (
-          <>
-            <span className='font-semibold'>{meal.name}</span>
-          </>
-        )}
-      </div>
+    <div className='mt-[120px] md:mt-[45px] lg:mt-[100px] bg-neutral-100 px-10 sm:p-20 flex flex-col relative space-y-20 max-w-[1980px]'>
+
 
       <Main data={meal} />
       <Recommended similarMeals={similarMeals} />

@@ -1,8 +1,9 @@
 import React, { useRef, useCallback } from 'react';
 
 // Import Swiper React components
-import { Pagination } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 
 // Import Swiper styles
 import 'swiper/css';
@@ -28,27 +29,34 @@ function Reviews() {
 
   const ReviewsContent = [
     {
-      author: 'John K.',
-      content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Et nam veritatis soluta saepe odit voluptatibus. Eos non ratione 
-            pariatur dolorum nihil quo. Inventore ratione sint accusamus impedit 
-            amet aliquid vel.
+      author: 'Amara A.',
+      content: `I've been obsessed with this small business lately!! My partner and I ordered the 
+      garlic parmesan wings and super french toast through their website and received on the time I 
+      reserved. The food came fresh and hot! I still can't believe that the meals were ordered were 
+      under 500 calories.
+`,
+    },
+    {
+      author: 'Sebastian L.',
+      content: `BELIEVE the hype!! Food was so so good, favorite dish was by far the 
+      pad thai and the tocino silog. It was cooked to perfection, the sweetness from the meat, 
+      the savoriness from the garlic rice AND the fried egg on top, perfect pair! 
+      The pad thai as well and it was very delicious and considering the amount that Nathan provides is a plus.
+        `,
+    },
+    {
+      author: 'Lydia K.',
+      content: `My husband got the chicken pesto pasta and I got the chicken adobo. 10/10 would recommend to 
+      anyone that is interested in eating food that is delicious and macro-friendly. I appreciate that 
+      Nathan provides the macros for us when we track.
             `,
     },
     {
-      author: 'Veronica G.',
-      content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Et nam veritatis soluta saepe odit voluptatibus. Eos non ratione 
-            pariatur dolorum nihil quo. Inventore ratione sint accusamus impedit 
-            amet aliquid vel.
-            `,
-    },
-    {
-      author: 'Adam S.',
-      content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Et nam veritatis soluta saepe odit voluptatibus. Eos non ratione 
-            pariatur dolorum nihil quo. Inventore ratione sint accusamus impedit 
-            amet aliquid vel.
+      author: 'Charles C.',
+      content: `On a diet? Have no time to cook? Look no further this small business is here! I know Nathan 
+      personally and he strives to balance the food's deliciousness and the macronutrients. I've been a loyal 
+      customer of his and since I placed my first order I have not stop. I have lost over 20 pounds just eating 
+      his meal preps alone. 
             `,
     },
   ];
@@ -64,12 +72,18 @@ function Reviews() {
         <Swiper
           ref={sliderRef}
           slidesPerView={1}
+          modules={[Pagination, Autoplay]}
+          autoplay={{
+            delay: 1,
+            disableOnInteraction: true,
+          }}
           loop={true}
+          speed={5000}
           className={`hidden  w-[80%] md:w-[75%] rounded-2xl sm:block `}>
           {ReviewsContent.map((item, idx) => (
             <SwiperSlide
               key={`Review-${idx}`}
-              className='flex flex-col space-y-5 items-center w-[200px] bg-white p-5'>
+              className='cursor-grab active:cursor-grabbing min-h-[400px] flex flex-col space-y-5 justify-between items-center w-[200px] bg-white p-5'>
               <ImQuotesRight className='text-yellow-500 text-[3rem]' />
               <p className='w-[90%] text-center'>{item.content}</p>
               <span className='font-bold text-2xl uppercase'>
@@ -97,14 +111,20 @@ function Reviews() {
       {/* Mobile Reviews */}
       <Swiper
         slidesPerView={1}
-        modules={[Pagination]}
-        pagination={{ clickable: true }}
+        modules={[Pagination, Autoplay]}
+        autoplay={{
+          delay: 1,
+          disableOnInteraction: true,
+        }}
         loop={true}
+        speed={5000}
+        pagination={{ clickable: true }}
+
         className={` sm:hidden w-[80%]  bg-white rounded-2xl`}>
         {ReviewsContent.map((item, idx) => (
           <SwiperSlide
             key={`Review-${idx}`}
-            className='mb-12  flex flex-col space-y-5 items-center w-[200px] bg-white p-5'>
+            className='mb-12  flex flex-col space-y-5 justify-between items-center w-[200px] bg-white p-5'>
             <ImQuotesRight className='text-yellow-500 text-[3rem]' />
             <p className='w-[90%] text-center'>{item.content}</p>
             <span className='font-bold text-2xl uppercase'>{item.author}</span>

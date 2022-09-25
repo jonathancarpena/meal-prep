@@ -220,7 +220,7 @@ const Description = ({ description, handleUpdate }) => {
                     </div>
 
                     <textarea
-                        className='p-2 text-lg w-full focus:outline-none h-max rounded-sm ring-2'
+                        className='p-2 text-lg min-w-[500px] min-h-[200px] w-full focus:outline-none h-max rounded-sm ring-2'
                         onChange={(e) => setInput(e.target.value)}
                         value={input}
                     />
@@ -471,12 +471,12 @@ const Img = ({ img, name, handleUpdate }) => {
     }
     return (
 
-        <div className='relative max-w-[400px] max-h-[400px] min-w-[300px] min-h-[300px] lg:max-w-[300px] lg:max-h-[300px] lg:min-w-[500px] lg:min-h-[500px] bg-transparent flex justify-center items-center'>
+        <div className='relative max-w-[400px] max-h-[400px] min-w-[300px] min-h-[300px] lg:max-w-[300px] lg:max-h-[300px] lg:min-w-[500px] rounded-xl overflow-hidden lg:min-h-[500px] bg-transparent flex justify-center items-center'>
             {!edit &&
                 <>
                     {display.official
-                        ? <Image src={display.official} alt={display.official} sx='object-center object-cover rounded-xl overflow-hidden' />
-                        : <span className='bg-neutral-400 lg:w-[500px] lg:h-[500px] w-full h-full min-w-[300px] min-h-[300px] flex justify-center items-center rounded-lg' >
+                        ? <Image src={display.official} alt={display.official} sx='object-center object-cover rounded-xl overflow-hidden ' />
+                        : <span className='bg-neutral-400 lg:w-[500px] lg:h-[500px]  lg:max-w-[500px] lg:max-h-[500px] w-full h-full min-w-[300px] min-h-[300px] flex justify-center items-center rounded-lg' >
                             <GiCookingPot className='text-white text-[10rem]' />
                         </span>
                     }

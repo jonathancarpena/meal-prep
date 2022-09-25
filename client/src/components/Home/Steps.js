@@ -15,7 +15,7 @@ const StepsContent = [
     {
         text: 'We Prep',
         img: <GiHotMeal className='text-[100px] lg:text-[125px]' />,
-        description: "Our chefs prepare your healthy meals fresh — they’re never frozen. We deliver them straight to your doorstep."
+        description: "I prepare your healthy meals fresh — they’re never frozen. We deliver them straight to your doorstep or you can pick it up."
     },
     {
         text: 'You Enjoy',

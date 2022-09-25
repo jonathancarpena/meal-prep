@@ -163,7 +163,7 @@ function AdminMeals() {
                                     {/* Image */}
                                     <Link to={`/admin/meals/${replaceSpaces(element.name)}/${element._id}`} >
                                         {element.img
-                                            ? <Image src={element.img} alt={element.name} width={50} height={50} sx='object-center object-cover rounded-lg overflow-hidden' />
+                                            ? <Image src={element.img} alt={element.name} width={50} height={50} sx='max-w-[50px] max-h-[50px] object-center object-cover rounded-lg overflow-hidden' />
                                             : <span className='bg-neutral-400 w-[50px] h-[50px] flex justify-center items-center rounded-lg' >
                                                 <GiCookingPot className='text-white text-3xl' />
                                             </span>

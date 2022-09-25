@@ -22,24 +22,25 @@ function Main() {
 
             <p className='text-lg'>
               That means providing meals that are of the highest quality &
-              ensuring that every spoonful bite the customer experiences is 5
-              Stars!
+              ensuring that every spoonful bite the customer experiences is amazing!
             </p>
           </div>
 
           <div className='flex flex-col space-y-2'>
             <h3 className='font-bold text-xl'>
-              Anabar | The Protein Bar that changed that game.
+              The Backstory Behind the Business
             </h3>
             <p className='text-lg'>
-              The Anabar was launched on March 19th of 2021 & quickly became the
-              hottest bar on the market! Before launch we knew we really had
-              something special & a true industry first in the protein bar
-              space. After selling out multiple launches in a row we realized we
-              had something truly special on our hands. We now employ a full
-              staff dedicated to making sure every bar you buy is of the highest
-              quality & every order you place is packaged & to you as fast as
-              humanly possible. We promise you this bar is worth the wait!
+              {`Nathan's Meal Prep was launched on March 19th of 2020. At the start of 
+              COVID-19 pandemic with gyms closed and people quarantining at home, I 
+              wondered how were people going to stay in shape. As we all decided to make do 
+              with what we had, our bodies needed the right nutrients to continue our 
+              body building journey. A combination of staying fit while people were at home 
+              inspired me to create a delivery/pickup meal prep business. So I began and experimented with 
+              many various recipes while keeping the meals under 500 calories and adjusting 
+              the meals to meet a high protein macronutrient profile. I want to ensure that my meals
+              will bring customer's 100% satisfaction.
+              `}
             </p>
           </div>
         </div>

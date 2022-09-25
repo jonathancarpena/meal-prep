@@ -48,7 +48,7 @@ function CoreValues() {
                   <img src={Accent} alt={Accent} />
                 </div>
               </div>
-              <span className='capitalize text-white font-bold text-xl sm:text-2xl text-center'>
+              <span className='w-max max-w-[300px] capitalize text-white font-bold text-xl sm:text-2xl text-center'>
                 {item.text}
               </span>
             </li>
