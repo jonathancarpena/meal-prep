@@ -12,7 +12,7 @@
 
 ## 📷 Screenshots
 
-<ul style="display:flex flex-direction:column">
+<ul style="display:flex flex-direction:column width:max">
 <img src="./screenshots/landing.PNG" width="690" height="375" alt="landing"> 
 <img src="./screenshots/meals.PNG" width="690" height="375" alt="meals">
 <img src="./screenshots/single-meal.PNG" width="690" height="375" alt="single-meal">    
