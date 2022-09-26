@@ -6,7 +6,7 @@ function Main() {
       <div className='flex flex-col rounded-xl pt-10 w-full items-center lg:max-w-[100rem]   lg:flex-row'>
         {/* Image */}
         <div className=' text-white font-semibold text-3xl border-[15px] border-white  h-[600px] md:w-[400px] md:h-[700px] w-full lg:max-w-xl  flex items-center justify-center bg-yellow-400 drop-shadow-xl z-20 lg:min-w-[500px] lg:min-h-[800px] lg:max-h-[800px]'>
-          <img src={Myself} alt='myself' className='object-cover' />
+          <img src={Myself} alt='myself' width="100%" height="100%" className='object-cover w-full h-full' />
         </div>
 
         {/* Content */}
