@@ -165,11 +165,11 @@ function Contact() {
   }
   return (
     <div className=' mt-[45px] md:mt-[10px] lg:mt-0  min-h-[91vh] p-5 lg:p-20 bg-neutral-100 flex justify-center items-center'>
-      <div className='flex flex-col space-y-5 bg-white rounded-xl p-5 drop-shadow-xl max-w-[700px]'>
+      <div className='flex flex-col space-y-5 bg-white rounded-xl p-5 drop-shadow-xl max-w-[900px]'>
         <h1 className='font-semibold text-4xl'>Contact Us</h1>
         <p>
-          Any questions about the products, your order, inquiries etc...Shoot us
-          an email at: Support@FinalBossPerformance.com
+          Any questions about the meals, your order, inquiries etc. You can shoot us
+          a direct message on Instagram @itsncarpena.
         </p>
 
         <form
