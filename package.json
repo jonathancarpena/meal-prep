@@ -5,7 +5,6 @@
 	"main": "index.js",
 	"scripts": {
 		"client": "npm run start --prefix client",
-		"build": "npm run build --prefex client",
 		"dev": "concurrently \"npm run server --prefix server\" \"npm run start --prefix client\"",
 		"server": "npm run start --prefix server"
 	},
