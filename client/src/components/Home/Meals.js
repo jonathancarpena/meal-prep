@@ -28,10 +28,9 @@ function Card({ item }) {
         <BsInfoCircleFill className='text-[1.5rem]' />
       </button>
       <div
-        className={`${
-          showInfo ? 'translate-y-0' : 'translate-y-full'
-        } select-none flex flex-col justify-evenly transition-all ease-in-out duration-200 bg-white opacity-90 h-[40%] p-8 md:p-10 bottom-0 w-full absolute`}>
-        <h3 className='text-lg lg:text-2xl font-bold lg:mb-4'>
+        className={`${showInfo ? 'translate-y-0' : 'translate-y-full'
+          } select-none flex flex-col justify-evenly transition-all ease-in-out duration-200 bg-white opacity-90 h-[50%] p-8 md:p-10 bottom-0 w-full absolute`}>
+        <h3 className='text-lg lg:text-xl font-bold lg:mb-4'>
           {item.info.name}
         </h3>
         <ul>
@@ -54,36 +53,36 @@ function Card({ item }) {
 function Meals() {
   const MealsContent = [
     {
-      text: 'Breakfast',
+      text: 'Lunch',
       img: meal1,
       info: {
-        name: 'Super French Toast',
-        cal: 256,
-        protein: 43,
-        carbs: 23,
-        fats: 10,
+        name: 'Katsu Chicken Curry',
+        cal: 500,
+        protein: 20,
+        carbs: 53,
+        fats: 23,
       },
     },
     {
-      text: 'Lunch',
+      text: 'Breakfast',
       img: meal2,
       info: {
-        name: 'Anabolic Pesto Pasta',
-        cal: 256,
-        protein: 43,
-        carbs: 23,
-        fats: 10,
+        name: 'Powerful Oats',
+        cal: 480,
+        protein: 18,
+        carbs: 41,
+        fats: 18,
       },
     },
     {
       text: 'Dinner',
       img: meal3,
       info: {
-        name: 'Creamy Chicken w/ Spinach',
-        cal: 256,
-        protein: 43,
-        carbs: 23,
-        fats: 10,
+        name: 'Pesto Chicken Pasta',
+        cal: 500,
+        protein: 20,
+        carbs: 50,
+        fats: 20,
       },
     },
   ];
