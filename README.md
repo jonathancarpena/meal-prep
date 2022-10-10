@@ -1,12 +1,12 @@
 # Nathan's Meal Prep
 
 > A web app created for client that displays information about their company and
-> products. Application also features a content managing system and ordering
-> system.
+> products. The application also features a content managing system and an ordering system.
+
 
 ## 🚀 Objective
 
-> To improve and redesing the client's previous website and build a user portal
+> To improve and redesign the client's previous website and build a user portal
 > that'll allow them to configure their meals, orders, and business avaibility
 > dates.
 
