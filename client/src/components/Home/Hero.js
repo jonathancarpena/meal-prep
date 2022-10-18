@@ -22,7 +22,7 @@ function Hero() {
                 <h1 className='flex flex-col -space-y-5 font-bold uppercase tracking-tighter text-[2rem] md:text-[2.5rem] lg:text-[5rem]'>
                     <span>Your Next Favorite</span>
                     <span>
-                        <span className='border-b-8 border-b-yellow-400 w-max mr-2 lg:mr-3'>Macro-Friendly</span>
+                        <span className='block mt-3 lg:mt-0 border-b-8 lg:border-b-[14px]  border-b-yellow-400 w-max mr-2 lg:mr-3'>Macro-Friendly</span>
                         <span>Meals.</span>
                     </span>
 
