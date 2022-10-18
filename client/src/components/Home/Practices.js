@@ -18,7 +18,7 @@ function Practices() {
       ),
     },
     {
-      text: 'Packed w/ Protein',
+      text: 'Protein Pack',
       img: <img src={Meal2} alt='packed-with-protein' />,
     },
     {
@@ -26,7 +26,7 @@ function Practices() {
       img: <img src={Meal3} alt='always-fresh' />,
     },
     {
-      text: 'Certified Delicious',
+      text: 'Extra Delicious',
       img: <BsTrophy className='text-white text-[66px]' />,
     },
   ];
@@ -41,8 +41,8 @@ function Practices() {
           {PracticesContent.map((item) => (
             <li
               key={item.text}
-              className='select-none cursor-default hover:scale-110 transition-all ease-in-out duration-300 w-[150px] h-[150px] lg:w-[170px] lg:h-[170px] rounded-xl flex flex-col items-center justify-center space-y-5 text-white bg-neutral-700  drop-shadow-xl'>
-              <div className='flex justify-center max-h-[60px] '>
+              className='select-none cursor-default hover:scale-110 transition-all ease-in-out duration-300 w-[150px] h-[150px] lg:w-[170px] lg:h-[170px] rounded-xl flex flex-col items-center justify-center space-y-2 text-white bg-neutral-700  drop-shadow-xl'>
+              <div className='flex justify-center min-h-[60px] max-h-[60px]  '>
                 {item.img}
               </div>
               <span className='lg:text-lg font-semibold '>{item.text}</span>
