@@ -46,11 +46,10 @@ function MealGrid({ data }) {
             navigate(`/meals/${replaceSpaces(item.name)}/${item._id}`)
           }
           key={`meal-${idx}`}
-          className={` relative cursor-pointer sm:hover:drop-shadow-xl sm:hover:scale-110 transition-all duration-200 ease-in-out overflow-hidden h-[300px] w-[300px]  lg:h-[450px] lg:w-[450px] rounded-b-xl drop-shadow-lg flex items-center justify-center`}>
+          className={` relative cursor-pointer sm:hover:drop-shadow-xl sm:hover:scale-110 transition-all duration-200 ease-in-out  h-[300px] w-[300px]  lg:h-[450px] lg:w-[450px] rounded-b-xl drop-shadow-lg flex items-center justify-center`}>
           {/* Image */}
           <div
-            className={`${!item.img ? 'bg-neutral-300' : 'bg-white'
-              }  w-full h-full flex justify-center items-center `}>
+            className={`${!item.img ? 'bg-neutral-300' : ''}  rounded-b-xl overflow-hidden w-full h-full flex justify-center items-center `}>
             {item.img ? (
               <Image src={`${item.img}`} />
             ) : (
@@ -59,7 +58,7 @@ function MealGrid({ data }) {
           </div>
 
           {/* Name */}
-          <div className='bg-white h-[70px] lg:h-[90px] flex items-center justify-center absolute bottom-0 w-full'>
+          <div className='rounded-b-xl bg-white h-[70px] lg:h-[90px] flex items-center justify-center absolute bottom-0 w-full'>
             <span className='text-center uppercase font-semibold text-neutral-700 lg:text-2xl'>
               {item.name}
             </span>
@@ -68,7 +67,7 @@ function MealGrid({ data }) {
           {/* Type Bookmark */}
           <span
             className={`${MealType[item.type].color
-              } absolute -top-[0.5rem] left-0 p-4  rounded-b-[100%] drop-shadow-sm`}>
+              } absolute top-0 left-0 p-4  rounded-b-[100%] drop-shadow-sm`}>
             {MealType[item.type].icon}
           </span>
         </div>

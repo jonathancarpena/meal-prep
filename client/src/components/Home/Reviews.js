@@ -61,9 +61,9 @@ function Reviews() {
     },
   ];
   return (
-    <div className='py-32 bg-[#333333] rounded-2xl'>
+    <div className='py-32  bg-[#333333] rounded-2xl'>
       {/* Header */}
-      <h2 className=' text-white text-5xl tracking-tight font-bold text-center uppercase lg:mb-10 lg:text-7xl '>
+      <h2 className=' mx-1  text-white text-5xl tracking-tight font-bold text-center uppercase lg:mb-10 lg:text-7xl '>
         See What People are saying<span className='text-yellow-500'>.</span>
       </h2>
 
@@ -79,11 +79,11 @@ function Reviews() {
           }}
           loop={true}
           speed={5000}
-          className={`hidden  w-[80%] md:w-[75%] rounded-2xl sm:block `}>
+          className={`hidden w-[80%] md:w-[75%] rounded-2xl md:block `}>
           {ReviewsContent.map((item, idx) => (
             <SwiperSlide
               key={`Review-${idx}`}
-              className='cursor-grab active:cursor-grabbing min-h-[400px] flex flex-col space-y-5 justify-between items-center w-[200px] bg-white p-5'>
+              className='cursor-grab active:cursor-grabbing min-h-[400px] flex flex-col  justify-between items-center w-[200px] bg-white p-5'>
               <ImQuotesRight className='text-yellow-500 text-[3rem]' />
               <p className='w-[90%] text-center'>{item.content}</p>
               <span className='font-bold text-2xl uppercase'>
@@ -94,13 +94,13 @@ function Reviews() {
         </Swiper>
 
         {/* Navigation Arrows */}
-        <span className='hidden sm:inline-block absolute top-[50%] -translate-y-[50%] left-10 cursor-pointer'>
+        <span className='hidden md:inline-block absolute top-[50%] -translate-y-[50%] left-4 lg:left-10 cursor-pointer'>
           <GoChevronLeft
             className='   text-yellow-500 text-5xl'
             onClick={handlePrev}
           />
         </span>
-        <span className='hidden sm:inline-block absolute top-[50%] -translate-y-[50%] right-10 cursor-pointer'>
+        <span className='hidden md:inline-block absolute top-[50%] -translate-y-[50%] right-4 lg:right-10 cursor-pointer'>
           <GoChevronRight
             className=' text-yellow-500 text-5xl'
             onClick={handleNext}
@@ -119,15 +119,14 @@ function Reviews() {
         loop={true}
         speed={5000}
         pagination={{ clickable: true }}
-
-        className={` sm:hidden w-[80%]  bg-white rounded-2xl`}>
+        className={`  md:hidden w-[90%] block bg-white rounded-2xl`}>
         {ReviewsContent.map((item, idx) => (
           <SwiperSlide
-            key={`Review-${idx}`}
-            className='mb-12  flex flex-col space-y-5 justify-between items-center w-[200px] bg-white p-5'>
+            key={`Mobile-Review-${idx}`}
+            className='pb-10 flex flex-col justify-between items-center min-h-[400px]  w-[200px]  p-5'>
             <ImQuotesRight className='text-yellow-500 text-[3rem]' />
             <p className='w-[90%] text-center'>{item.content}</p>
-            <span className='font-bold text-2xl uppercase'>{item.author}</span>
+            <span className='font-bold text-2xl uppercase '>{item.author}</span>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -13,7 +13,7 @@ import { useStoreOpen } from '../../lib/context/StoreOpenProvider'
 function Book() {
     const open = useStoreOpen()
     return (
-        <div className=' h-screen lg:h-max pt-32 overflow-hidden w-full bg-netural-100  px-12 flex flex-col-reverse lg:justify-between lg:flex-row '>
+        <div className=' lg:h-max pt-32 lg:pt-60 overflow-hidden w-full bg-netural-100  px-12 flex flex-col-reverse lg:justify-between lg:flex-row '>
 
 
             {/* Image */}

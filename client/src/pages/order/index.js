@@ -31,11 +31,11 @@ import { FaInstagram, FaMinus, FaPlus, FaStoreSlash } from 'react-icons/fa';
 
 const EmptyBag = () => {
   return (
-    <div className='relative bottom-10 flex flex-col  space-y-5 justify-center items-center text-neutral-700'>
-      <h1 className='text-4xl font-semibold text-center'>
+    <div className='relative  flex flex-col  space-y-5 justify-center items-center text-neutral-700'>
+      <h1 className='text-3xl md:text-4xl font-semibold text-center'>
         Nothing inside Your Bag
       </h1>
-      <BsBag className='text-[4rem]' />
+      <BsBag className='text-[3rem] md:text-[4rem]' />
     </div>
   );
 };
@@ -220,9 +220,8 @@ const ListOfBagItems = ({ ulRef, bag }) => {
           <button
             disabled={qty === 1}
             onClick={() => handleUpdateQty('sub')}
-            className={`${
-              qty > 1 ? 'text-neutral-800' : 'text-neutral-400'
-            } p-2 w-[40px] h-[40px]`}>
+            className={`${qty > 1 ? 'text-neutral-800' : 'text-neutral-400'
+              } p-2 w-[40px] h-[40px]`}>
             <FaMinus className={`text-xl`} />
           </button>
           <span className='bg-white p-2 text-lg w-[40px] h-[40px] flex items-center justify-center'>
@@ -254,9 +253,8 @@ const ListOfBagItems = ({ ulRef, bag }) => {
     return (
       <>
         <li
-          className={`hidden lg:flex lg:space-x-10 ${
-            index === bag.length - 1 ? '' : 'mb-10'
-          } `}>
+          className={`hidden lg:flex lg:space-x-10 ${index === bag.length - 1 ? '' : 'mb-10'
+            } `}>
           {/* Product */}
           <div className='flex flex-1 space-x-10'>
             <div className='w-[120px] h-[120px] flex rounded-2xl justify-center items-center bg-neutral-300 overflow-hidden'>
@@ -293,9 +291,8 @@ const ListOfBagItems = ({ ulRef, bag }) => {
 
         {/* Mobile */}
         <li
-          className={`lg:hidden flex flex-col space-y-3 ${
-            index === bag.length - 1 ? '' : 'mb-10'
-          }  `}>
+          className={`lg:hidden flex flex-col space-y-3 ${index === bag.length - 1 ? '' : 'mb-10'
+            }  `}>
           {/* Product */}
           <div className='flex space-x-5'>
             {/* Image */}
@@ -521,7 +518,7 @@ function Order() {
     return <Loading />;
   }
   return (
-    <div className='mt-[90px] bg-neutral-100 p-10 lg:p-20  min-h-[91vh] flex justify-center items-center'>
+    <div className='lg:mt-[90px] min-h-[90vh] bg-neutral-100 p-10 lg:p-20  lg:min-h-[91vh] flex justify-center items-center'>
       {bag.length === 0 ? (
         <EmptyBag />
       ) : (

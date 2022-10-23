@@ -15,28 +15,25 @@ function Hero() {
     const open = useStoreOpen()
 
     return (
-        <div className='  h-screen flex flex-col items-center justify-between  lg:flex-row lg:justify-around lg:items-end'>
+        <div className=' relative  h-screen flex flex-col items-center   lg:flex-row lg:justify-between lg:items-end'>
 
             {/* Header */}
-            <div className='mt-48 md:mt-40 lg:mt-0 flex flex-col  justify-center lg:place-self-center lg:w-[50%] lg:ml-8'>
-                <h1 className='flex flex-col -space-y-5 font-bold uppercase tracking-tighter text-[2rem] md:text-[2.5rem] lg:text-[5rem]'>
-                    <span>Your Next Favorite</span>
-                    <span>
-                        <span className='block mt-3 lg:mt-0 border-b-8 lg:border-b-[14px]  border-b-yellow-400 w-max mr-2 lg:mr-3'>Macro-Friendly</span>
-                        <span>Meals.</span>
-                    </span>
-
+            <div className='  mt-32 lg:mt-0 flex flex-col justify-center lg:place-self-center lg:w-[60%] lg:ml-8 '>
+                <h1 className='flex flex-col font-bold   uppercase tracking-tighter text-[2rem] md:text-[2.5rem] lg:text-[5rem]'>
+                    <span className='lg:-mb-10'>Your Favorite</span>
+                    <span className='inline-block w-max -mt-2 lg:mt-4 border-b-8 lg:border-b-[14px]  border-b-yellow-400 mr-2 lg:mr-3'>Macro-Friendly</span>
+                    <span className='-mt-1'>Meals.</span>
                 </h1>
-                <h2 className=' mt-4 uppercase text-xl lg:text-3xl font-semibold  w-max italic'>
+                <h2 className=' mt-3 lg:mt-2 uppercase text-xl lg:text-3xl font-semibold  w-max italic'>
                     Everything under 500 calories.
                 </h2>
                 {open
-                    ? <Link to='/meals/today' className=' mt-8 w-max'>
+                    ? <Link to='/meals/today' className=' mt-4 lg:mt-7 w-max'>
                         <button className='drop-shadow-lg text-white text-xl lg:text-3xl font-semibold w-full bg-yellow-400 hover:scale-105 hover:bg-yellow-300 active:bg-yellow-400 active:scale-95 transition-all ease-in-out px-5 py-5 rounded-2xl lg:w-max lg:px-20'>
                             ORDER NOW
                         </button>
                     </Link>
-                    : <Link to='/meals/today' className=' mt-8 w-max'>
+                    : <Link to='/meals/today' className=' mt-4 lg:mt-7 w-max'>
                         <button className=' drop-shadow-lg text-white text-xl lg:text-3xl font-semibold w-full bg-yellow-400 hover:scale-105 hover:bg-yellow-300 active:bg-yellow-400 active:scale-95 transition-all ease-in-out px-5 py-5 rounded-2xl lg:w-max lg:px-20'>
                             VIEW THE MENU
                         </button>
@@ -46,10 +43,10 @@ function Hero() {
             </div>
 
             {/* Image */}
-            <div className='flex justify-center relative lg:mr-8'>
+            <div className='flex justify-center absolute bottom-0 lg:relative h-[40%]'>
 
                 {/* Arch */}
-                <div className=' bg-yellow-400 rounded-t-[5rem] w-screen h-[350px] md:h-[500px] z-[50] flex justify-center lg:w-[800px] lg:h-[600px]'>
+                <div className=' bg-yellow-400 rounded-t-[5rem] w-screen h-full md:h-[420px] z-[50] flex justify-center lg:w-[900px] lg:h-[600px] lg:mr-8'>
                     <div className='bottom-10 relative flex justify-center'>
                         <img
                             src={HeroImage}

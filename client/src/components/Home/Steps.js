@@ -41,7 +41,7 @@ function Steps() {
                 {StepsContent.map((item) => (
                     <div key={item.text} className='flex flex-col  space-y-2 justify-center items-center px-20  '>
 
-                        <div className='bg-neutral-800  rounded-xl drop-shadow-2xl flex flex-col justify-center items-center space-y-2 w-[200px] h-[200px] lg:w-[250px] lg:h-[250px]'>
+                        <div className='bg-neutral-800  text-center rounded-xl drop-shadow-2xl flex flex-col justify-center items-center space-y-2 w-[200px] h-[200px] lg:w-[250px] lg:h-[250px]'>
                             {/* Icon */}
                             {item.img}
 
