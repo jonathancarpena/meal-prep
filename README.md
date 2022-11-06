@@ -13,11 +13,11 @@
 ## 📷 Screenshots
 
 <ul style="display:flex flex-direction:column width:max">
-<img src="./screenshots/landing.PNG" width="690" height="375" alt="landing"> 
-<img src="./screenshots/meals.PNG" width="690" height="375" alt="meals">
-<img src="./screenshots/single-meal.PNG" width="690" height="375" alt="single-meal">    
-<img src="./screenshots/admin-orders.PNG" width="690" height="375" alt="admin-orders">  
-<img src="./screenshots/admin-meals.PNG" width="690" height="375" alt="admin-meals">  
+<img src="./screenshots/landing.PNG" style="max-width:100%; max-height:375px;" alt="landing"> 
+<img src="./screenshots/meals.PNG" style="max-width:100%; max-height:375px;" alt="meals">
+<img src="./screenshots/single-meal.PNG" style="max-width:100%; max-height:375px;" alt="single-meal">    
+<img src="./screenshots/admin-orders.PNG" style="max-width:100%; max-height:375px;" alt="admin-orders">  
+<img src="./screenshots/admin-meals.PNG" style="max-width:100%; max-height:375px;" alt="admin-meals">  
 </ul>
 
 ### Mobile Design
